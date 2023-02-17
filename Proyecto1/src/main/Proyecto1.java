@@ -5,6 +5,8 @@
  */
 package main;
 
+import interfaz.Interfaz;
+
 /**
  *
  * @author andre
@@ -15,7 +17,8 @@ public class Proyecto1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Interfaz v1 = new Interfaz();
+        v1.setVisible(true);
     }
     
 }
