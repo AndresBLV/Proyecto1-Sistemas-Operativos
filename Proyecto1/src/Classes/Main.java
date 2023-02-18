@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main;
+package Classes;
 
-import interfaz.Interfaz;
+import Interfaces.Interfaz;
 
 /**
  *
  * @author andre
  */
-public class Proyecto1 {
+public class Main {
 
     /**
      * @param args the command line arguments
