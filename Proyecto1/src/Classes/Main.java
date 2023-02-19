@@ -5,7 +5,7 @@
  */
 package Classes;
 
-import Interfaces.Interfaz;
+import Interfaces.VentanaSimulacion;
 
 /**
  *
@@ -17,8 +17,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Interfaz v1 = new Interfaz();
-        v1.setVisible(true);
+        VentanaSimulacion simulacion = new VentanaSimulacion();
+        simulacion.setVisible(true);
     }
     
 }
