@@ -54,6 +54,8 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         eliminarPIntE2 = new javax.swing.JButton();
+        faltasPME2 = new javax.swing.JLabel();
+        faltasPME1 = new javax.swing.JLabel();
         productoresCreE2 = new javax.swing.JLabel();
         productoresCieE2 = new javax.swing.JLabel();
         productoresIniE2 = new javax.swing.JLabel();
@@ -116,9 +118,11 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         jLabel69 = new javax.swing.JLabel();
         maxCieE2 = new javax.swing.JLabel();
         capacidadCieE2 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
         jLabel72 = new javax.swing.JLabel();
         sueldoPME1 = new javax.swing.JLabel();
         maxIntE2 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
         sueldoIntE2 = new javax.swing.JLabel();
         sueldoCreE2 = new javax.swing.JLabel();
         sueldoIniE2 = new javax.swing.JLabel();
@@ -173,6 +177,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         jLabel31 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
         countdownE1 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -187,7 +192,6 @@ public class VentanaSimulacion extends javax.swing.JFrame {
 
         setMinimumSize(new java.awt.Dimension(900, 550));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(900, 550));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Panel.setBackground(new java.awt.Color(204, 204, 204));
@@ -383,8 +387,8 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         jLabel32.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(0, 0, 0));
         jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel32.setText("Sueldo");
-        Panel.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 60, -1));
+        jLabel32.setText("Faltas");
+        Panel.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 60, -1));
 
         eliminarPIntE2.setBackground(new java.awt.Color(51, 51, 51));
         eliminarPIntE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
@@ -396,6 +400,20 @@ public class VentanaSimulacion extends javax.swing.JFrame {
             }
         });
         Panel.add(eliminarPIntE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, 40, 30));
+
+        faltasPME2.setBackground(new java.awt.Color(153, 153, 153));
+        faltasPME2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        faltasPME2.setForeground(new java.awt.Color(0, 0, 0));
+        faltasPME2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        faltasPME2.setText("0");
+        Panel.add(faltasPME2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 170, 60, 20));
+
+        faltasPME1.setBackground(new java.awt.Color(153, 153, 153));
+        faltasPME1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        faltasPME1.setForeground(new java.awt.Color(0, 0, 0));
+        faltasPME1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        faltasPME1.setText("0");
+        Panel.add(faltasPME1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 60, 20));
 
         productoresCreE2.setBackground(new java.awt.Color(153, 153, 153));
         productoresCreE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
@@ -557,7 +575,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         estadoDirectorE1.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         estadoDirectorE1.setForeground(new java.awt.Color(0, 0, 0));
         estadoDirectorE1.setText("null");
-        Panel.add(estadoDirectorE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 170, 20));
+        Panel.add(estadoDirectorE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 110, 20));
 
         sueldoDE1.setBackground(new java.awt.Color(153, 153, 153));
         sueldoDE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
@@ -570,13 +588,13 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         estadoDirectorE2.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         estadoDirectorE2.setForeground(new java.awt.Color(0, 0, 0));
         estadoDirectorE2.setText("null");
-        Panel.add(estadoDirectorE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, 160, 20));
+        Panel.add(estadoDirectorE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, 100, 20));
 
         estadoPME2.setBackground(new java.awt.Color(153, 153, 153));
         estadoPME2.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         estadoPME2.setForeground(new java.awt.Color(0, 0, 0));
         estadoPME2.setText("null");
-        Panel.add(estadoPME2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, 190, 20));
+        Panel.add(estadoPME2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, 100, 20));
 
         iniciarEstudios.setBackground(new java.awt.Color(51, 51, 51));
         iniciarEstudios.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
@@ -702,7 +720,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         estadoPME1.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         estadoPME1.setForeground(new java.awt.Color(0, 0, 0));
         estadoPME1.setText("null");
-        Panel.add(estadoPME1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 170, 20));
+        Panel.add(estadoPME1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 110, 20));
 
         sueldoPME2.setBackground(new java.awt.Color(153, 153, 153));
         sueldoPME2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
@@ -754,8 +772,9 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         jLabel60.setBackground(new java.awt.Color(153, 153, 153));
         jLabel60.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
         jLabel60.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel60.setText("Sueldo");
-        Panel.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 140, 80, -1));
+        jLabel60.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel60.setText("Faltas");
+        Panel.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 140, 60, -1));
 
         sueldoDE2.setBackground(new java.awt.Color(153, 153, 153));
         sueldoDE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
@@ -824,6 +843,13 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         capacidadCieE2.setText("0");
         Panel.add(capacidadCieE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 410, 20, -1));
 
+        jLabel33.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel33.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel33.setText("Sueldo");
+        Panel.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 60, -1));
+
         jLabel72.setBackground(new java.awt.Color(153, 153, 153));
         jLabel72.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
         jLabel72.setForeground(new java.awt.Color(0, 0, 0));
@@ -842,6 +868,12 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         maxIntE2.setForeground(new java.awt.Color(0, 0, 0));
         maxIntE2.setText("30");
         Panel.add(maxIntE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, 20, -1));
+
+        jLabel61.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel61.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        jLabel61.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel61.setText("Sueldo");
+        Panel.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 140, 80, -1));
 
         sueldoIntE2.setBackground(new java.awt.Color(153, 153, 153));
         sueldoIntE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
@@ -1221,6 +1253,13 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         countdownE1.setText("0");
         Panel.add(countdownE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 80, 50, 20));
 
+        jLabel34.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel34.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel34.setText("Faltas");
+        Panel.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 60, -1));
+
         getContentPane().add(Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 550));
 
         pack();
@@ -1437,6 +1476,8 @@ public class VentanaSimulacion extends javax.swing.JFrame {
     private javax.swing.JLabel estadoDirectorE2;
     private javax.swing.JLabel estadoPME1;
     private javax.swing.JLabel estadoPME2;
+    private javax.swing.JLabel faltasPME1;
+    private javax.swing.JLabel faltasPME2;
     private javax.swing.JLabel gananciasE1;
     private javax.swing.JLabel gananciasE2;
     private javax.swing.JLabel gastosE1;
@@ -1470,6 +1511,8 @@ public class VentanaSimulacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
@@ -1486,6 +1529,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel69;
