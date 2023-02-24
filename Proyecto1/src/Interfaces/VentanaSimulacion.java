@@ -8,12 +8,24 @@ package Interfaces;
 import java.util.concurrent.Semaphore;
 import Classes.*;
 import clases.*;
+import javax.swing.JOptionPane;
+
 
 /**
  *
  * @author andre
  */
 public class VentanaSimulacion extends javax.swing.JFrame {
+    private boolean start;
+    private double tornillosDaily=30;
+    private double tablasDaily=1;//ERRORRRRRRRRRR
+    private double patasDaily=2;
+    
+    
+    private long dayDuration;
+    public static volatile int daysPast;
+    public static volatile int daysToDeliver;
+
     // Estudio 1
     public static int maxCapIntroE1;
     public static int maxCapCreditosE1;
@@ -46,6 +58,8 @@ public class VentanaSimulacion extends javax.swing.JFrame {
     public static Semaphore mutexPlotTwistE1 = new Semaphore(1);
     
     // Estudio 2
+    public static int total =13;
+    public static int count =0;
     public static int maxCapIntroE2;
     public static int maxCapCreditosE2;
     public static int maxCapInicioE2;
@@ -75,6 +89,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
     public static Semaphore mutexInicioE2 = new Semaphore(1);
     public static Semaphore mutexCierreE2 = new Semaphore(1);
     public static Semaphore mutexPlotTwistE2 = new Semaphore(1);
+    
     
     public VentanaSimulacion() {
         initComponents();
@@ -1368,43 +1383,153 @@ public class VentanaSimulacion extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarEE1ActionPerformed
 
     private void eliminarPIntE2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPIntE2ActionPerformed
-        
+        int sueldo = 5;
+        int num = Integer.parseInt(productoresIntE2.getText());
+        int mult = Integer.parseInt(sueldoIntE2.getText());
+        if (num != 0){
+            num -= 1;
+            count -=1;
+            mult = mult -sueldo;
+            sueldoIntE2.setText(Integer.toString(mult));
+            productoresIntE2.setText(Integer.toString(num));
+        }else{
+            JOptionPane.showMessageDialog(null, "No hay productores"); 
+        }
     }//GEN-LAST:event_eliminarPIntE2ActionPerformed
 
     private void agregarPIntE2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarPIntE2ActionPerformed
-        
+        int sueldo = 5;
+        if (count < total) {
+            int mult;
+            int num = Integer.parseInt(productoresIntE2.getText());
+            num += 1;
+            count +=1;
+            mult = sueldo * num;
+            sueldoIntE2.setText(Integer.toString(mult));
+            productoresIntE2.setText(Integer.toString(num));
+        }else{
+            JOptionPane.showMessageDialog(null, "Numero maximo de producotres alcanzado");
+        }                                             
     }//GEN-LAST:event_agregarPIntE2ActionPerformed
 
     private void eliminarPCreE2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPCreE2ActionPerformed
-        
+        int sueldo = 3;
+        int num = Integer.parseInt(productoresCreE2.getText());
+        int mult = Integer.parseInt(sueldoCreE2.getText());
+        if (num != 0){
+            num -= 1;
+            count -=1;
+            mult = mult -sueldo;
+            sueldoCreE2.setText(Integer.toString(mult));
+            productoresCreE2.setText(Integer.toString(num));
+        }else{
+            JOptionPane.showMessageDialog(null, "No hay productores"); 
+        }
     }//GEN-LAST:event_eliminarPCreE2ActionPerformed
 
     private void agregarPCreE2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarPCreE2ActionPerformed
-        
+        int sueldo = 3;
+        if (count < total) {
+            int mult;
+            int num = Integer.parseInt(productoresCreE2.getText());
+            num += 1;
+            count +=1;
+            mult = sueldo * num;
+            sueldoCreE2.setText(Integer.toString(mult));
+            productoresCreE2.setText(Integer.toString(num));
+        }else{
+            JOptionPane.showMessageDialog(null, "Numero maximo de producotres alcanzado");
+        }                                                
     }//GEN-LAST:event_agregarPCreE2ActionPerformed
 
     private void eliminarPIniE2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPIniE2ActionPerformed
-        
+        int sueldo = 7;
+        int num = Integer.parseInt(productoresIniE2.getText());
+        int mult = Integer.parseInt(sueldoIniE2.getText());
+        if (num != 0){
+            num -= 1;
+            count -=1;
+            mult = mult -sueldo;
+            sueldoIniE2.setText(Integer.toString(mult));
+            productoresIniE2.setText(Integer.toString(num));
+        }else{
+            JOptionPane.showMessageDialog(null, "No hay productores"); 
+        }
     }//GEN-LAST:event_eliminarPIniE2ActionPerformed
 
     private void agregarPIniE2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarPIniE2ActionPerformed
-        
+        int sueldo = 7;
+        if (count < total) {
+            int mult;
+            int num = Integer.parseInt(productoresIniE2.getText());
+            num += 1;
+            count +=1;
+            mult = sueldo * num;
+            sueldoIniE2.setText(Integer.toString(mult));
+            productoresIniE2.setText(Integer.toString(num));
+        }else{
+            JOptionPane.showMessageDialog(null, "Numero maximo de producotres alcanzado");
+        }
     }//GEN-LAST:event_agregarPIniE2ActionPerformed
 
     private void eliminarPCieE2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPCieE2ActionPerformed
-        
+        float sueldo = (float) 7.5;
+        int num = Integer.parseInt(productoresCieE2.getText());
+        float mult = (float) Integer.parseInt(sueldoCieE2.getText());
+        if (num != 0){
+            num -= 1;
+            count -=1;
+            mult = mult -sueldo;
+            sueldoCieE2.setText(Integer.toString((int)mult));
+            productoresCieE2.setText(Integer.toString(num));
+        }else{
+            JOptionPane.showMessageDialog(null, "No hay productores"); 
+        }
     }//GEN-LAST:event_eliminarPCieE2ActionPerformed
 
     private void agregarPCieE2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarPCieE2ActionPerformed
-        
+        float sueldo = (float)7.5;
+        if (count < total) {
+            float mult;
+            int num = Integer.parseInt(productoresCieE2.getText());
+            num += 1;
+            count +=1;
+            mult = sueldo * num;
+            sueldoCieE2.setText(Integer.toString((int)mult));
+            productoresCieE2.setText(Integer.toString(num));
+        }else{
+            JOptionPane.showMessageDialog(null, "Numero maximo de producotres alcanzado");
+        }
     }//GEN-LAST:event_agregarPCieE2ActionPerformed
 
     private void agregarEE2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarEE2ActionPerformed
-        
+        int sueldo = 8;
+        if (count < total) {
+            int mult;
+            int num = Integer.parseInt(ensambladoresE2.getText());
+            num += 1;
+            count +=1;
+            mult = sueldo * num;
+            sueldoEE2.setText(Integer.toString(mult));
+            ensambladoresE2.setText(Integer.toString(num));
+        }else{
+            JOptionPane.showMessageDialog(null, "Numero maximo de producotres alcanzado");
+        }
     }//GEN-LAST:event_agregarEE2ActionPerformed
 
     private void eliminarEE2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarEE2ActionPerformed
-        
+        int sueldo = 8;
+        int num = Integer.parseInt(ensambladoresE2.getText());
+        int mult = Integer.parseInt(sueldoEE2.getText());
+        if (num != 0){
+            num -= 1;
+            count -=1;
+            mult = mult -sueldo;
+            sueldoEE2.setText(Integer.toString(mult));
+            ensambladoresE2.setText(Integer.toString(num));
+        }else{
+            JOptionPane.showMessageDialog(null, "No hay productores"); 
+        }
     }//GEN-LAST:event_eliminarEE2ActionPerformed
 
     private void iniciarEstudiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarEstudiosActionPerformed
@@ -1448,11 +1573,33 @@ public class VentanaSimulacion extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarPPTE1ActionPerformed
 
     private void agregarPPTE2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarPPTE2ActionPerformed
-        // TODO add your handling code here:
+        int sueldo = 10;
+        if (count < total) {
+            int mult;
+            int num = Integer.parseInt(productoresPTE2.getText());
+            num += 1;
+            count +=1;
+            mult = sueldo * num;
+            sueldoPTE2.setText(Integer.toString((mult)));
+            productoresPTE2.setText(Integer.toString(num));
+        }else{
+            JOptionPane.showMessageDialog(null, "Numero maximo de producotres alcanzado");
+        }
     }//GEN-LAST:event_agregarPPTE2ActionPerformed
 
     private void eliminarPPTE2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPPTE2ActionPerformed
-        // TODO add your handling code here:
+        int sueldo = 10;
+        int num = Integer.parseInt(productoresPTE2.getText());
+        int mult = Integer.parseInt(sueldoPTE2.getText());
+        if (num != 0){
+            num -= 1;
+            count -=1;
+            mult = mult -sueldo;
+            sueldoPTE2.setText(Integer.toString(mult));
+            productoresPTE2.setText(Integer.toString(num));
+        }else{
+            JOptionPane.showMessageDialog(null, "No hay productores"); 
+        }
     }//GEN-LAST:event_eliminarPPTE2ActionPerformed
 
     /**
