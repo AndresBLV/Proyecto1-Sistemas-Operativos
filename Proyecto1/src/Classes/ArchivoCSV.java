@@ -692,7 +692,7 @@ public class ArchivoCSV {
         String texto="";
         try
         {  
-            FileReader archivos=new FileReader("test\\datosPorDefecto.csv");
+            FileReader archivos=new FileReader("test\\parametrosPorDefectoE2.csv");
             BufferedReader lee=new BufferedReader(archivos);
             while((aux=lee.readLine())!=null)
             {

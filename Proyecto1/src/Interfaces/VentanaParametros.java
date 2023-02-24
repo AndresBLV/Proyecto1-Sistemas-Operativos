@@ -531,11 +531,13 @@ public class VentanaParametros extends javax.swing.JFrame {
     }//GEN-LAST:event_irSimulacionButtonActionPerformed
 
     private void irParametrosButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irParametrosButtonActionPerformed
-        
+        this.setEnabled(false);
     }//GEN-LAST:event_irParametrosButtonActionPerformed
 
     private void irDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irDashboardButtonActionPerformed
-        this.setEnabled(false);
+        this.dispose();
+        VentanaDashboard dashboard = new VentanaDashboard();
+        dashboard.setVisible(true);
     }//GEN-LAST:event_irDashboardButtonActionPerformed
 
     private void cambiarParamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarParamActionPerformed

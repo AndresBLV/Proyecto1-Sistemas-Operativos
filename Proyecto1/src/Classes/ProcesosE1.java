@@ -179,11 +179,315 @@ public class ProcesosE1 extends Thread{
     
     @Override
     public void run(){
-        
+        if (tipo == 0) {
+        while (this.stop) {
+            if (Integer.parseInt(area13.getText())==0) {
+                this.StopToggle();
+            }
+        try{
+            sleep(dia);
+            if (Integer.parseInt(area13.getText())==0) {
+                this.StopToggle();
+            }
+            cuenta();
+
+        }catch(InterruptedException e){
+        }
+        }
+        }
+    if (tipo == 1) {
+        while (this.stop) {
+            if (Integer.parseInt(area13.getText())==0) {
+                this.StopToggle();
+            }
+        try{
+            if (procesado != true) {
+            sleep(dia/3); //tiempo que le toma producir una intro
+            if (Integer.parseInt(area13.getText())==0) {
+                this.StopToggle();
+            }
+            procesado = true;
+           cuenta();
+            }else{
+                cuenta();
+            }
+
+        }catch(InterruptedException e){
+        }
+        }
+        }
+        if (tipo == 2) {
+        while (this.stop) {
+            if (Integer.parseInt(area13.getText())==0) {
+                this.StopToggle();
+            }
+        try{
+            if (procesado != true) {
+            sleep(dia/3); //tiempo que le toma producir unos creditos
+            if (Integer.parseInt(area13.getText())==0) {
+                this.StopToggle();
+            }
+            procesado = true;
+            cuenta();
+            }else{
+                cuenta();
+            }
+
+        }catch(InterruptedException e){
+        }
+        }
+        }
+        if (tipo == 3) {
+        while (this.stop) {
+            if (Integer.parseInt(area13.getText())==0) {
+                this.StopToggle();
+            }
+        try{
+            if (procesado!=true) {
+            sleep(dia*4); //tiempo que le toma producir un inicio
+            if (Integer.parseInt(area13.getText())==0) {
+                this.StopToggle();
+            }
+            procesado=true;
+           cuenta();
+            }else{
+                cuenta();
+            }
+
+        }catch(InterruptedException e){
+        }
+        }
+        }
+        if (tipo == 4) {
+        while (this.stop) {
+            if (Integer.parseInt(area13.getText())==0) {
+                this.StopToggle();
+            }
+        try{
+            if (procesado!=true) {
+            sleep(dia*3); //tiempo que le toma producir un cierre
+            if (Integer.parseInt(area13.getText())==0) {
+                this.StopToggle();
+            }
+            procesado=true;
+           cuenta();
+            }else{
+                cuenta();
+            }
+
+        }catch(InterruptedException e){
+        }
+        }
+        }
+        if (tipo == 5) {
+        while (this.stop) {
+            if (Integer.parseInt(area13.getText())==0) {
+                this.StopToggle();
+            }
+        try{
+            if (procesado!=true) {
+            sleep(dia*3); //tiempo que le toma producir un plot twist 
+            if (Integer.parseInt(area13.getText())==0) {
+                this.StopToggle();
+            }
+            procesado = true;
+           cuenta();
+            }else{
+                cuenta();
+            }
+
+        }catch(InterruptedException e){
+        }
+        }
+        }
+        if (tipo == 6) {
+        while (this.stop) {
+            if (Integer.parseInt(area13.getText())==0) {
+                this.StopToggle();
+            }
+        try{
+            if (procesado!=true) {
+            sleep(dia*2); //tiempo que le toma producir un cap al ensamblador
+            if (Integer.parseInt(area13.getText())==0) {
+                this.StopToggle();
+            }
+            procesado = true;
+           cuenta();
+            }else{
+                cuenta();
+            }
+
+        }catch(InterruptedException e){
+        }
+        }
+        }
     }
     
     synchronized void cuenta() throws InterruptedException{
-        
+        if (tipo==0) {
+            area5.setText(Integer.toString((Integer.parseInt(area1.getText())*3)+Integer.parseInt(area5.getText())));
+            area6.setText(Integer.toString((Integer.parseInt(area2.getText())*4)+Integer.parseInt(area6.getText())));
+            area7.setText(Integer.toString((Integer.parseInt(area3.getText())*5)+Integer.parseInt(area7.getText())));
+            area8.setText(Integer.toString((Integer.parseInt(area4.getText())*5)+Integer.parseInt(area8.getText())));
+            area10.setText(Integer.toString((Integer.parseInt(area9.getText())*6)+Integer.parseInt(area10.getText())));
+            area11.setText(Integer.toString(Integer.parseInt(area11.getText())+168));
+            area12.setText(Integer.toString(Integer.parseInt(area12.getText())+180));
+        try {
+            sleep(10);
+        } catch (Exception e) {
+        }
+        }
+        if (tipo==1) {
+            Int.acquire();
+             if (intro.availablePermits() !=0) { 
+            sem1.acquire();
+            intro.acquire();
+            area1.setText(Integer.toString(Integer.parseInt(area1.getText())+1));
+            sem1.release();
+            procesado = false;
+            Int.release();
+             }else{
+                 wait(1500);
+                 Int.release();
+             }
+        try {
+            sleep(10);
+        } catch (Exception e) {
+        }
+        }if (tipo==2) {
+            Cre.acquire();
+            if (creditos.availablePermits() !=0) {                     
+            sem2.acquire();
+            creditos.acquire();
+            area2.setText(Integer.toString(Integer.parseInt(area2.getText())+1));
+            sem2.release();
+             procesado = false;
+            Cre.release();
+            }else{
+                wait(1500);
+                Cre.release();
+            }
+        try {
+            sleep(10);
+        } catch (Exception e) {
+        }
+        }if (tipo==3) {
+            Ini.acquire();
+            if (inicio.availablePermits() !=0) {                        
+            sem3.acquire();
+            inicio.acquire();
+            area3.setText(Integer.toString(Integer.parseInt(area3.getText())+1));
+            sem3.release();
+             procesado = false;
+            Ini.release();
+            }else{
+                wait(1500);
+                Ini.release();
+            }
+        try {
+            sleep(10);
+        } catch (Exception e) {
+        }
+       
+        }
+        if (tipo==4) {
+            Cie.acquire();
+            if (cierre.availablePermits() !=0) {                     
+            sem4.acquire();
+            cierre.acquire();
+            area4.setText(Integer.toString(Integer.parseInt(area4.getText())+1));
+            sem4.release();
+             procesado = false;
+             Cie.release();
+            }else{
+                wait(1500);
+                Cie.release();
+
+            }
+        try {
+            sleep(10);
+        } catch (Exception e) {
+        }
+        }
+        if (tipo==5) {
+            PT.acquire();
+            if (plottwist.availablePermits() !=0) {                     
+            sem5.acquire();
+            plottwist.acquire();
+            areaPT.setText(Integer.toString(Integer.parseInt(areaPT.getText())+1));
+            sem5.release();
+             procesado = false;
+             PT.release();
+            }else{
+                wait(1500);
+                PT.release();
+
+            }
+        try {
+            sleep(10);
+        } catch (Exception e) {
+        }
+        }
+        if (tipo==6) {
+            try {
+                ArchivoCSV archiCsv = new ArchivoCSV();
+                String capacidadIntro = archiCsv.leerCsvParametrosPorDefectoCapacidadIntroE1();
+                colitaE1.acquire();
+                while (intro.availablePermits() > Integer.parseInt(capacidadIntro)-1) {                     
+                }
+                sem1.acquire();
+                intro.release(1);
+                area1.setText(Integer.toString(Integer.parseInt(area1.getText())-1));
+                sem1.release();
+                colitaE1.release();
+                colitaE2.acquire();
+                String capacidadCreditos = archiCsv.leerCsvParametrosPorDefectoCapacidadCreditosE1();
+                while (creditos.availablePermits()>Integer.parseInt(capacidadCreditos)-3) {                        
+                }
+                sem2.acquire();
+                creditos.release(3);
+                area2.setText(Integer.toString(Integer.parseInt(area2.getText())-3));
+                sem2.release();
+                colitaE2.release();
+                colitaE3.acquire();
+                String capacidadInicio = archiCsv.leerCsvParametrosPorDefectoCapacidadInicioE1();
+                while (inicio.availablePermits()>Integer.parseInt(capacidadInicio)-1) {  
+                }
+                sem3.acquire();
+                inicio.release();
+                area3.setText(Integer.toString(Integer.parseInt(area3.getText())-1));
+                sem3.release();
+                colitaE3.release();
+                colitaE4.acquire();
+                String capacidadCierre = archiCsv.leerCsvParametrosPorDefectoCapacidadCierreE1();
+                while (cierre.availablePermits()>Integer.parseInt(capacidadCierre)-4) {                        
+                }
+                sem4.acquire();
+                cierre.release(4);
+                area4.setText(Integer.toString(Integer.parseInt(area4.getText())-4));
+                sem4.release();
+                colitaE4.release();
+                colitaE5.acquire();
+                String capacidadPlotTwist = archiCsv.leerCsvParametrosPorDefectoCapacidadPlotTwistE1();
+                while (intro.availablePermits() > Integer.parseInt(capacidadPlotTwist)-1) {                     
+                }
+                sem5.acquire();
+                plottwist.release(1);
+                areaPT.setText(Integer.toString(Integer.parseInt(areaPT.getText())-1));
+                sem5.release();
+                colitaE5.release();
+                area6.setText(Integer.toString(Integer.parseInt(area6.getText())+1));
+                procesado=false;
+                
+                
+          
+            
+             } catch (InterruptedException ex) {
+         Logger.getLogger(ProcesosE1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    
     }
     
 }

@@ -5,6 +5,8 @@
  */
 package Interfaces;
 
+import Classes.ArchivoCSV;
+import Classes.ColaE1;
 import java.util.concurrent.Semaphore;
 
 /**
@@ -12,37 +14,50 @@ import java.util.concurrent.Semaphore;
  * @author andre
  */
 public class VentanaSimulacion extends javax.swing.JFrame {
-    // Estudio 1
-    public static int maxCapIntroE1;
-    public static int maxCapCreditosE1;
-    public static int maxCapInicioE1;
-    public static int maxCapCierreE1;
-    public static int maxCapPlotTwistE1;
+    ArchivoCSV archivo = new ArchivoCSV();
     
-    public static int counterIntroE1;
-    public static int counterCreditosE1;
-    public static int counterInicioE1;
-    public static int counterCierreE1;
-    public static int counterPlotTwsitE1;
     
-    public static Semaphore capacidadIntroE1 = new Semaphore(maxCapIntroE1);
-    public static Semaphore capacidadCreditosE1 = new Semaphore(maxCapCreditosE1);
-    public static Semaphore capacidadInicioE1 = new Semaphore(maxCapInicioE1);
-    public static Semaphore capacidadCierreE1 = new Semaphore(maxCapCierreE1);
-    public static Semaphore capacidadPlotTwistE1 = new Semaphore(maxCapPlotTwistE1);
+    //Fabrica 1
+    String cadenaFab1 = "";
+    int diasFab1;
+    long diaFab1=0;
+    int empleadosFab1 = 19;
+    ColaE1 colaLibreIntroE1 = new ColaE1();
+    ColaE1 ColaOcupadoIntroE1 = new ColaE1();
+    ColaE1 colaLibreCreditosE1 = new ColaE1();
+    ColaE1 colaOcupadoCreditosE1 = new ColaE1();
+    ColaE1 colaLibreInicioE1 = new ColaE1();
+    ColaE1 colaOcupadoIncioE1 = new ColaE1();
+    ColaE1 colaLibreCierreE1 = new ColaE1();
+    ColaE1 colaOcupadoCierreE1 = new ColaE1();
+    ColaE1 colaLibrePlotTwistE1 = new ColaE1();
+    ColaE1 colaOcupadoPlotTwistE1 = new ColaE1();
+    ColaE1 colaEnsambladoresLibresE1 = new ColaE1(); 
+    ColaE1 colaEnsambladoresOcupadosE1 = new ColaE1();
+    Semaphore sem1E1 = new Semaphore(1);
+    Semaphore sem2E1 = new Semaphore(1);
+    Semaphore sem3E1 = new Semaphore(1);
+    Semaphore sem4E1 = new Semaphore(1);
+    Semaphore sem5E1 = new Semaphore(1);
+    Semaphore mutex1E1 = new Semaphore(1);
+    Semaphore mutex2E1 = new Semaphore(1);
+    Semaphore mutex3E1 = new Semaphore(1);
+    Semaphore mutex4E1 = new Semaphore(1);
+    Semaphore mutex5E1 = new Semaphore(1);
+    Semaphore capacidadIntroE1;
+    Semaphore capacidadCreditosE1;
+    Semaphore capacidadInicioE1;
+    Semaphore capacidadCierreE1;
+    Semaphore capacidadPlotTwistE1;
+    Semaphore introE1 = new Semaphore(1);
+    Semaphore creditosE1= new Semaphore(1);
+    Semaphore inicioE1= new Semaphore(1);
+    Semaphore cierreE1= new Semaphore(1);
+    Semaphore plottwistE1= new Semaphore(1);
+
     
-    public static Semaphore noEmptyIntroE1 = new Semaphore(0);
-    public static Semaphore noEmptyCreditosE1 = new Semaphore(0);   
-    public static Semaphore noEmptyInicioE1 = new Semaphore(0);        
-    public static Semaphore noEmptyCierreE1 = new Semaphore(0);
-    public static Semaphore noEmptyPlotTwistE1 = new Semaphore(0);
-    
-    public static Semaphore mutexIntroE1 = new Semaphore(1);
-    public static Semaphore mutexCreditosE1 = new Semaphore(1);
-    public static Semaphore mutexInicioE1 = new Semaphore(1);
-    public static Semaphore mutexCierreE1 = new Semaphore(1);
-    public static Semaphore mutexPlotTwistE1 = new Semaphore(1);
-    
+    // Historico
+    String[] historicoLanzamientos = new String[7];    
     public VentanaSimulacion() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -265,7 +280,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         Panel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, 100, -1));
 
         eliminarPIntE1.setBackground(new java.awt.Color(51, 51, 51));
-        eliminarPIntE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        eliminarPIntE1.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         eliminarPIntE1.setForeground(new java.awt.Color(255, 255, 255));
         eliminarPIntE1.setText("-");
         eliminarPIntE1.addActionListener(new java.awt.event.ActionListener() {
@@ -282,7 +297,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         Panel.add(sueldoEE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 510, 30, -1));
 
         agregarPIntE1.setBackground(new java.awt.Color(51, 51, 51));
-        agregarPIntE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        agregarPIntE1.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         agregarPIntE1.setForeground(new java.awt.Color(255, 255, 255));
         agregarPIntE1.setText("+");
         agregarPIntE1.addActionListener(new java.awt.event.ActionListener() {
@@ -293,7 +308,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         Panel.add(agregarPIntE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 40, 30));
 
         eliminarPCreE1.setBackground(new java.awt.Color(51, 51, 51));
-        eliminarPCreE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        eliminarPCreE1.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         eliminarPCreE1.setForeground(new java.awt.Color(255, 255, 255));
         eliminarPCreE1.setText("-");
         eliminarPCreE1.addActionListener(new java.awt.event.ActionListener() {
@@ -304,7 +319,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         Panel.add(eliminarPCreE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, 40, 30));
 
         agregarPCreE1.setBackground(new java.awt.Color(51, 51, 51));
-        agregarPCreE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        agregarPCreE1.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         agregarPCreE1.setForeground(new java.awt.Color(255, 255, 255));
         agregarPCreE1.setText("+");
         agregarPCreE1.addActionListener(new java.awt.event.ActionListener() {
@@ -315,7 +330,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         Panel.add(agregarPCreE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, 40, 30));
 
         eliminarPIniE1.setBackground(new java.awt.Color(51, 51, 51));
-        eliminarPIniE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        eliminarPIniE1.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         eliminarPIniE1.setForeground(new java.awt.Color(255, 255, 255));
         eliminarPIniE1.setText("-");
         eliminarPIniE1.addActionListener(new java.awt.event.ActionListener() {
@@ -326,7 +341,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         Panel.add(eliminarPIniE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 360, 40, 30));
 
         agregarPIniE1.setBackground(new java.awt.Color(51, 51, 51));
-        agregarPIniE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        agregarPIniE1.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         agregarPIniE1.setForeground(new java.awt.Color(255, 255, 255));
         agregarPIniE1.setText("+");
         agregarPIniE1.addActionListener(new java.awt.event.ActionListener() {
@@ -337,7 +352,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         Panel.add(agregarPIniE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 360, 40, 30));
 
         eliminarPCieE1.setBackground(new java.awt.Color(51, 51, 51));
-        eliminarPCieE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        eliminarPCieE1.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         eliminarPCieE1.setForeground(new java.awt.Color(255, 255, 255));
         eliminarPCieE1.setText("-");
         eliminarPCieE1.addActionListener(new java.awt.event.ActionListener() {
@@ -348,7 +363,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         Panel.add(eliminarPCieE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, 40, 30));
 
         agregarPCieE1.setBackground(new java.awt.Color(51, 51, 51));
-        agregarPCieE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        agregarPCieE1.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         agregarPCieE1.setForeground(new java.awt.Color(255, 255, 255));
         agregarPCieE1.setText("+");
         agregarPCieE1.addActionListener(new java.awt.event.ActionListener() {
@@ -371,7 +386,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         Panel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 480, -1, -1));
 
         agregarEE1.setBackground(new java.awt.Color(51, 51, 51));
-        agregarEE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        agregarEE1.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         agregarEE1.setForeground(new java.awt.Color(255, 255, 255));
         agregarEE1.setText("+");
         agregarEE1.addActionListener(new java.awt.event.ActionListener() {
@@ -382,7 +397,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         Panel.add(agregarEE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 500, 40, 30));
 
         eliminarEE1.setBackground(new java.awt.Color(51, 51, 51));
-        eliminarEE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        eliminarEE1.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         eliminarEE1.setForeground(new java.awt.Color(255, 255, 255));
         eliminarEE1.setText("-");
         eliminarEE1.addActionListener(new java.awt.event.ActionListener() {
@@ -420,7 +435,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         Panel.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 60, -1));
 
         eliminarPIntE2.setBackground(new java.awt.Color(51, 51, 51));
-        eliminarPIntE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        eliminarPIntE2.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         eliminarPIntE2.setForeground(new java.awt.Color(255, 255, 255));
         eliminarPIntE2.setText("-");
         eliminarPIntE2.addActionListener(new java.awt.event.ActionListener() {
@@ -463,7 +478,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         Panel.add(productoresIniE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, 20, -1));
 
         agregarPIntE2.setBackground(new java.awt.Color(51, 51, 51));
-        agregarPIntE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        agregarPIntE2.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         agregarPIntE2.setForeground(new java.awt.Color(255, 255, 255));
         agregarPIntE2.setText("+");
         agregarPIntE2.addActionListener(new java.awt.event.ActionListener() {
@@ -474,7 +489,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         Panel.add(agregarPIntE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 280, 40, 30));
 
         eliminarPCreE2.setBackground(new java.awt.Color(51, 51, 51));
-        eliminarPCreE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        eliminarPCreE2.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         eliminarPCreE2.setForeground(new java.awt.Color(255, 255, 255));
         eliminarPCreE2.setText("-");
         eliminarPCreE2.addActionListener(new java.awt.event.ActionListener() {
@@ -485,7 +500,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         Panel.add(eliminarPCreE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 320, 40, 30));
 
         agregarPCreE2.setBackground(new java.awt.Color(51, 51, 51));
-        agregarPCreE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        agregarPCreE2.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         agregarPCreE2.setForeground(new java.awt.Color(255, 255, 255));
         agregarPCreE2.setText("+");
         agregarPCreE2.addActionListener(new java.awt.event.ActionListener() {
@@ -496,7 +511,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         Panel.add(agregarPCreE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 320, 40, 30));
 
         eliminarPIniE2.setBackground(new java.awt.Color(51, 51, 51));
-        eliminarPIniE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        eliminarPIniE2.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         eliminarPIniE2.setForeground(new java.awt.Color(255, 255, 255));
         eliminarPIniE2.setText("-");
         eliminarPIniE2.addActionListener(new java.awt.event.ActionListener() {
@@ -507,7 +522,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         Panel.add(eliminarPIniE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 360, 40, 30));
 
         agregarPIniE2.setBackground(new java.awt.Color(51, 51, 51));
-        agregarPIniE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        agregarPIniE2.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         agregarPIniE2.setForeground(new java.awt.Color(255, 255, 255));
         agregarPIniE2.setText("+");
         agregarPIniE2.addActionListener(new java.awt.event.ActionListener() {
@@ -518,7 +533,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         Panel.add(agregarPIniE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 40, 30));
 
         eliminarPCieE2.setBackground(new java.awt.Color(51, 51, 51));
-        eliminarPCieE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        eliminarPCieE2.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         eliminarPCieE2.setForeground(new java.awt.Color(255, 255, 255));
         eliminarPCieE2.setText("-");
         eliminarPCieE2.addActionListener(new java.awt.event.ActionListener() {
@@ -529,7 +544,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         Panel.add(eliminarPCieE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 400, 40, 30));
 
         agregarPCieE2.setBackground(new java.awt.Color(51, 51, 51));
-        agregarPCieE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        agregarPCieE2.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         agregarPCieE2.setForeground(new java.awt.Color(255, 255, 255));
         agregarPCieE2.setText("+");
         agregarPCieE2.addActionListener(new java.awt.event.ActionListener() {
@@ -547,7 +562,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         Panel.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 310, 20, -1));
 
         agregarEE2.setBackground(new java.awt.Color(51, 51, 51));
-        agregarEE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        agregarEE2.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         agregarEE2.setForeground(new java.awt.Color(255, 255, 255));
         agregarEE2.setText("+");
         agregarEE2.addActionListener(new java.awt.event.ActionListener() {
@@ -558,7 +573,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         Panel.add(agregarEE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 500, 40, 30));
 
         eliminarEE2.setBackground(new java.awt.Color(51, 51, 51));
-        eliminarEE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        eliminarEE2.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         eliminarEE2.setForeground(new java.awt.Color(255, 255, 255));
         eliminarEE2.setText("-");
         eliminarEE2.addActionListener(new java.awt.event.ActionListener() {
@@ -993,7 +1008,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         Panel.add(productoresPTE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 450, -1, -1));
 
         agregarPPTE1.setBackground(new java.awt.Color(51, 51, 51));
-        agregarPPTE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        agregarPPTE1.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         agregarPPTE1.setForeground(new java.awt.Color(255, 255, 255));
         agregarPPTE1.setText("+");
         agregarPPTE1.addActionListener(new java.awt.event.ActionListener() {
@@ -1004,7 +1019,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         Panel.add(agregarPPTE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 440, 40, 30));
 
         eliminarPPTE1.setBackground(new java.awt.Color(51, 51, 51));
-        eliminarPPTE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        eliminarPPTE1.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         eliminarPPTE1.setForeground(new java.awt.Color(255, 255, 255));
         eliminarPPTE1.setText("-");
         eliminarPPTE1.addActionListener(new java.awt.event.ActionListener() {
@@ -1046,7 +1061,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         Panel.add(productoresPTE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 450, 20, -1));
 
         agregarPPTE2.setBackground(new java.awt.Color(51, 51, 51));
-        agregarPPTE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        agregarPPTE2.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         agregarPPTE2.setForeground(new java.awt.Color(255, 255, 255));
         agregarPPTE2.setText("+");
         agregarPPTE2.addActionListener(new java.awt.event.ActionListener() {
@@ -1057,7 +1072,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
         Panel.add(agregarPPTE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 440, 40, 30));
 
         eliminarPPTE2.setBackground(new java.awt.Color(51, 51, 51));
-        eliminarPPTE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
+        eliminarPPTE2.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
         eliminarPPTE2.setForeground(new java.awt.Color(255, 255, 255));
         eliminarPPTE2.setText("-");
         eliminarPPTE2.addActionListener(new java.awt.event.ActionListener() {
