@@ -6,6 +6,8 @@
 package Interfaces;
 
 import java.util.concurrent.Semaphore;
+import Classes.*;
+import clases.*;
 
 /**
  *
@@ -42,6 +44,37 @@ public class VentanaSimulacion extends javax.swing.JFrame {
     public static Semaphore mutexInicioE1 = new Semaphore(1);
     public static Semaphore mutexCierreE1 = new Semaphore(1);
     public static Semaphore mutexPlotTwistE1 = new Semaphore(1);
+    
+    // Estudio 2
+    public static int maxCapIntroE2;
+    public static int maxCapCreditosE2;
+    public static int maxCapInicioE2;
+    public static int maxCapCierreE2;
+    public static int maxCapPlotTwistE2;
+    
+    public static int counterIntroE2;
+    public static int counterCreditosE2;
+    public static int counterInicioE2;
+    public static int counterCierreE2;
+    public static int counterPlotTwsitE2;
+    
+    public static Semaphore capacidadIntroE2 = new Semaphore(maxCapIntroE2);
+    public static Semaphore capacidadCreditosE2 = new Semaphore(maxCapCreditosE2);
+    public static Semaphore capacidadInicioE2 = new Semaphore(maxCapInicioE2);
+    public static Semaphore capacidadCierreE2 = new Semaphore(maxCapCierreE2);
+    public static Semaphore capacidadPlotTwistE2 = new Semaphore(maxCapPlotTwistE2);
+    
+    public static Semaphore noEmptyIntroE2 = new Semaphore(0);
+    public static Semaphore noEmptyCreditosE2 = new Semaphore(0);   
+    public static Semaphore noEmptyInicioE2 = new Semaphore(0);        
+    public static Semaphore noEmptyCierreE2 = new Semaphore(0);
+    public static Semaphore noEmptyPlotTwistE2 = new Semaphore(0);
+    
+    public static Semaphore mutexIntroE2 = new Semaphore(1);
+    public static Semaphore mutexCreditosE2 = new Semaphore(1);
+    public static Semaphore mutexInicioE2 = new Semaphore(1);
+    public static Semaphore mutexCierreE2 = new Semaphore(1);
+    public static Semaphore mutexPlotTwistE2 = new Semaphore(1);
     
     public VentanaSimulacion() {
         initComponents();
