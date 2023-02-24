@@ -90,6 +90,11 @@ public class VentanaSimulacion extends javax.swing.JFrame {
     public static Semaphore mutexCierreE2 = new Semaphore(1);
     public static Semaphore mutexPlotTwistE2 = new Semaphore(1);
     
+    private ProdIntro arrayIntro[];
+    private ProdInicio arrayInicio[];
+    private ProdCierre arrayCierre[];
+    private ProdCre arrayCre[];
+    private ProdPlot arrayPlot[];
     
     public VentanaSimulacion() {
         initComponents();
@@ -277,37 +282,31 @@ public class VentanaSimulacion extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(153, 153, 153));
         jLabel2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Tipo");
         Panel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, -1, -1));
 
         jLabel3.setBackground(new java.awt.Color(153, 153, 153));
         jLabel3.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Intro");
         Panel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, -1, -1));
 
         jLabel4.setBackground(new java.awt.Color(153, 153, 153));
         jLabel4.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Estudio 1");
         Panel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, -1, -1));
 
         productoresIniE1.setBackground(new java.awt.Color(153, 153, 153));
         productoresIniE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        productoresIniE1.setForeground(new java.awt.Color(0, 0, 0));
         productoresIniE1.setText("0");
         Panel.add(productoresIniE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 10, -1));
 
         ensambladoresE2.setBackground(new java.awt.Color(153, 153, 153));
         ensambladoresE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        ensambladoresE2.setForeground(new java.awt.Color(0, 0, 0));
         ensambladoresE2.setText("0");
         Panel.add(ensambladoresE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 510, -1, -1));
 
         jLabel9.setBackground(new java.awt.Color(153, 153, 153));
         jLabel9.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Capacidad(GB)");
         Panel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, 100, -1));
@@ -325,7 +324,6 @@ public class VentanaSimulacion extends javax.swing.JFrame {
 
         sueldoEE2.setBackground(new java.awt.Color(153, 153, 153));
         sueldoEE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        sueldoEE2.setForeground(new java.awt.Color(0, 0, 0));
         sueldoEE2.setText("0");
         Panel.add(sueldoEE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 510, 30, -1));
 
@@ -408,13 +406,11 @@ public class VentanaSimulacion extends javax.swing.JFrame {
 
         maxCreE1.setBackground(new java.awt.Color(153, 153, 153));
         maxCreE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        maxCreE1.setForeground(new java.awt.Color(0, 0, 0));
         maxCreE1.setText("25");
         Panel.add(maxCreE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 20, -1));
 
         jLabel10.setBackground(new java.awt.Color(153, 153, 153));
         jLabel10.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Ensambladores");
         Panel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 480, -1, -1));
 
@@ -442,27 +438,23 @@ public class VentanaSimulacion extends javax.swing.JFrame {
 
         episodiosProducidosE1.setBackground(new java.awt.Color(153, 153, 153));
         episodiosProducidosE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        episodiosProducidosE1.setForeground(new java.awt.Color(0, 0, 0));
         episodiosProducidosE1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         episodiosProducidosE1.setText("0");
         Panel.add(episodiosProducidosE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 190, 50, -1));
 
         jLabel26.setBackground(new java.awt.Color(153, 153, 153));
         jLabel26.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(0, 0, 0));
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel26.setText("The Last of Us");
         Panel.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 170, 160, -1));
 
         jLabel24.setBackground(new java.awt.Color(153, 153, 153));
         jLabel24.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(0, 0, 0));
         jLabel24.setText("Productores");
         Panel.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 250, -1, -1));
 
         jLabel32.setBackground(new java.awt.Color(153, 153, 153));
         jLabel32.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(0, 0, 0));
         jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel32.setText("Faltas");
         Panel.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 60, -1));
@@ -480,33 +472,28 @@ public class VentanaSimulacion extends javax.swing.JFrame {
 
         faltasPME2.setBackground(new java.awt.Color(153, 153, 153));
         faltasPME2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        faltasPME2.setForeground(new java.awt.Color(0, 0, 0));
         faltasPME2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         faltasPME2.setText("0");
         Panel.add(faltasPME2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 170, 60, 20));
 
         faltasPME1.setBackground(new java.awt.Color(153, 153, 153));
         faltasPME1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        faltasPME1.setForeground(new java.awt.Color(0, 0, 0));
         faltasPME1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         faltasPME1.setText("0");
         Panel.add(faltasPME1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 60, 20));
 
         productoresCreE2.setBackground(new java.awt.Color(153, 153, 153));
         productoresCreE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        productoresCreE2.setForeground(new java.awt.Color(0, 0, 0));
         productoresCreE2.setText("0");
         Panel.add(productoresCreE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 330, 20, 20));
 
         productoresCieE2.setBackground(new java.awt.Color(153, 153, 153));
         productoresCieE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        productoresCieE2.setForeground(new java.awt.Color(0, 0, 0));
         productoresCieE2.setText("0");
         Panel.add(productoresCieE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 410, 20, -1));
 
         productoresIniE2.setBackground(new java.awt.Color(153, 153, 153));
         productoresIniE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        productoresIniE2.setForeground(new java.awt.Color(0, 0, 0));
         productoresIniE2.setText("0");
         Panel.add(productoresIniE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, 20, -1));
 
@@ -589,7 +576,6 @@ public class VentanaSimulacion extends javax.swing.JFrame {
 
         productoresIntE2.setBackground(new java.awt.Color(153, 153, 153));
         productoresIntE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        productoresIntE2.setForeground(new java.awt.Color(0, 0, 0));
         productoresIntE2.setText("0");
         Panel.add(productoresIntE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 290, 20, -1));
         Panel.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 310, 20, -1));
@@ -618,58 +604,49 @@ public class VentanaSimulacion extends javax.swing.JFrame {
 
         episodiosProducidosE2.setBackground(new java.awt.Color(153, 153, 153));
         episodiosProducidosE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        episodiosProducidosE2.setForeground(new java.awt.Color(0, 0, 0));
         episodiosProducidosE2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         episodiosProducidosE2.setText("0");
         Panel.add(episodiosProducidosE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 410, 50, 20));
 
         jLabel48.setBackground(new java.awt.Color(153, 153, 153));
         jLabel48.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel48.setForeground(new java.awt.Color(0, 0, 0));
         jLabel48.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel48.setText("Velma");
         Panel.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 390, 160, -1));
 
         jLabel49.setBackground(new java.awt.Color(153, 153, 153));
         jLabel49.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel49.setForeground(new java.awt.Color(0, 0, 0));
         jLabel49.setText("Director esta...");
         Panel.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 196, 120, 30));
 
         jLabel50.setBackground(new java.awt.Color(153, 153, 153));
         jLabel50.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel50.setForeground(new java.awt.Color(0, 0, 0));
         jLabel50.setText("PM esta... ");
         Panel.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, -1, 20));
 
         jLabel51.setBackground(new java.awt.Color(153, 153, 153));
         jLabel51.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel51.setForeground(new java.awt.Color(0, 0, 0));
         jLabel51.setText("Estudio 2");
         Panel.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, -1, -1));
 
         estadoDirectorE1.setBackground(new java.awt.Color(153, 153, 153));
         estadoDirectorE1.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
-        estadoDirectorE1.setForeground(new java.awt.Color(0, 0, 0));
         estadoDirectorE1.setText("null");
         Panel.add(estadoDirectorE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 110, 20));
 
         sueldoDE1.setBackground(new java.awt.Color(153, 153, 153));
         sueldoDE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        sueldoDE1.setForeground(new java.awt.Color(0, 0, 0));
         sueldoDE1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         sueldoDE1.setText("0");
         Panel.add(sueldoDE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, 50, 20));
 
         estadoDirectorE2.setBackground(new java.awt.Color(153, 153, 153));
         estadoDirectorE2.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
-        estadoDirectorE2.setForeground(new java.awt.Color(0, 0, 0));
         estadoDirectorE2.setText("null");
         Panel.add(estadoDirectorE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, 100, 20));
 
         estadoPME2.setBackground(new java.awt.Color(153, 153, 153));
         estadoPME2.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
-        estadoPME2.setForeground(new java.awt.Color(0, 0, 0));
         estadoPME2.setText("null");
         Panel.add(estadoPME2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 170, 100, 20));
 
@@ -686,357 +663,300 @@ public class VentanaSimulacion extends javax.swing.JFrame {
 
         countdownE2.setBackground(new java.awt.Color(153, 153, 153));
         countdownE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        countdownE2.setForeground(new java.awt.Color(0, 0, 0));
         countdownE2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         countdownE2.setText("0");
         Panel.add(countdownE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 100, 50, 20));
 
         jLabel38.setBackground(new java.awt.Color(153, 153, 153));
         jLabel38.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel38.setForeground(new java.awt.Color(0, 0, 0));
         jLabel38.setText("Productores");
         Panel.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, -1, -1));
 
         jLabel58.setBackground(new java.awt.Color(153, 153, 153));
         jLabel58.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel58.setForeground(new java.awt.Color(0, 0, 0));
         jLabel58.setText("Creditos");
         Panel.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, -1, -1));
 
         productoresCreE1.setBackground(new java.awt.Color(153, 153, 153));
         productoresCreE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        productoresCreE1.setForeground(new java.awt.Color(0, 0, 0));
         productoresCreE1.setText("0");
         Panel.add(productoresCreE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, -1, -1));
 
         jLabel14.setBackground(new java.awt.Color(153, 153, 153));
         jLabel14.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Inicio");
         Panel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, 120, -1));
 
         jLabel15.setBackground(new java.awt.Color(153, 153, 153));
         jLabel15.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Cierre");
         Panel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, -1, -1));
 
         productoresIntE1.setBackground(new java.awt.Color(153, 153, 153));
         productoresIntE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        productoresIntE1.setForeground(new java.awt.Color(0, 0, 0));
         productoresIntE1.setText("0");
         Panel.add(productoresIntE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 20, -1));
 
         capacidadCreE1.setBackground(new java.awt.Color(153, 153, 153));
         capacidadCreE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        capacidadCreE1.setForeground(new java.awt.Color(0, 0, 0));
         capacidadCreE1.setText("0");
         Panel.add(capacidadCreE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 330, 20, -1));
 
         jLabel22.setBackground(new java.awt.Color(153, 153, 153));
         jLabel22.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
         jLabel22.setText("/");
         Panel.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, 20, -1));
 
         ensambladoresE1.setBackground(new java.awt.Color(153, 153, 153));
         ensambladoresE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        ensambladoresE1.setForeground(new java.awt.Color(0, 0, 0));
         ensambladoresE1.setText("0");
         Panel.add(ensambladoresE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 510, 20, -1));
 
         capacidadIntE1.setBackground(new java.awt.Color(153, 153, 153));
         capacidadIntE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        capacidadIntE1.setForeground(new java.awt.Color(0, 0, 0));
         capacidadIntE1.setText("0");
         Panel.add(capacidadIntE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 20, -1));
 
         jLabel29.setBackground(new java.awt.Color(153, 153, 153));
         jLabel29.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(0, 0, 0));
         jLabel29.setText("/");
         Panel.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 20, -1));
 
         maxIniE1.setBackground(new java.awt.Color(153, 153, 153));
         maxIniE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        maxIniE1.setForeground(new java.awt.Color(0, 0, 0));
         maxIniE1.setText("50");
         Panel.add(maxIniE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 20, -1));
 
         capacidadIniE1.setBackground(new java.awt.Color(153, 153, 153));
         capacidadIniE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        capacidadIniE1.setForeground(new java.awt.Color(0, 0, 0));
         capacidadIniE1.setText("0");
         Panel.add(capacidadIniE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, 20, -1));
 
         jLabel40.setBackground(new java.awt.Color(153, 153, 153));
         jLabel40.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel40.setForeground(new java.awt.Color(0, 0, 0));
         jLabel40.setText("/");
         Panel.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, 20, -1));
 
         maxCieE1.setBackground(new java.awt.Color(153, 153, 153));
         maxCieE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        maxCieE1.setForeground(new java.awt.Color(0, 0, 0));
         maxCieE1.setText("55");
         Panel.add(maxCieE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 410, 20, -1));
 
         capacidadCieE1.setBackground(new java.awt.Color(153, 153, 153));
         capacidadCieE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        capacidadCieE1.setForeground(new java.awt.Color(0, 0, 0));
         capacidadCieE1.setText("0");
         Panel.add(capacidadCieE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, 20, -1));
 
         jLabel43.setBackground(new java.awt.Color(153, 153, 153));
         jLabel43.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel43.setForeground(new java.awt.Color(0, 0, 0));
         jLabel43.setText("/");
         Panel.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 410, 20, -1));
 
         estadoPME1.setBackground(new java.awt.Color(153, 153, 153));
         estadoPME1.setFont(new java.awt.Font("NSimSun", 0, 12)); // NOI18N
-        estadoPME1.setForeground(new java.awt.Color(0, 0, 0));
         estadoPME1.setText("null");
         Panel.add(estadoPME1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 110, 20));
 
         sueldoPME2.setBackground(new java.awt.Color(153, 153, 153));
         sueldoPME2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        sueldoPME2.setForeground(new java.awt.Color(0, 0, 0));
         sueldoPME2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         sueldoPME2.setText("0");
         Panel.add(sueldoPME2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 170, 50, 20));
 
         maxIntE1.setBackground(new java.awt.Color(153, 153, 153));
         maxIntE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        maxIntE1.setForeground(new java.awt.Color(0, 0, 0));
         maxIntE1.setText("30");
         Panel.add(maxIntE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 20, -1));
 
         sueldoIntE1.setBackground(new java.awt.Color(153, 153, 153));
         sueldoIntE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        sueldoIntE1.setForeground(new java.awt.Color(0, 0, 0));
         sueldoIntE1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         sueldoIntE1.setText("0");
         Panel.add(sueldoIntE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 280, 50, 30));
 
         sueldoCreE1.setBackground(new java.awt.Color(153, 153, 153));
         sueldoCreE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        sueldoCreE1.setForeground(new java.awt.Color(0, 0, 0));
         sueldoCreE1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         sueldoCreE1.setText("0");
         Panel.add(sueldoCreE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 50, 30));
 
         sueldoIniE1.setBackground(new java.awt.Color(153, 153, 153));
         sueldoIniE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        sueldoIniE1.setForeground(new java.awt.Color(0, 0, 0));
         sueldoIniE1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         sueldoIniE1.setText("0");
         Panel.add(sueldoIniE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 360, 50, 30));
 
         jLabel12.setBackground(new java.awt.Color(153, 153, 153));
         jLabel12.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Capacidad(GB)");
         Panel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, -1, -1));
 
         maxCreE2.setBackground(new java.awt.Color(153, 153, 153));
         maxCreE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        maxCreE2.setForeground(new java.awt.Color(0, 0, 0));
         maxCreE2.setText("25");
         Panel.add(maxCreE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 20, -1));
 
         jLabel60.setBackground(new java.awt.Color(153, 153, 153));
         jLabel60.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel60.setForeground(new java.awt.Color(0, 0, 0));
         jLabel60.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel60.setText("Faltas");
         Panel.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 140, 60, -1));
 
         sueldoDE2.setBackground(new java.awt.Color(153, 153, 153));
         sueldoDE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        sueldoDE2.setForeground(new java.awt.Color(0, 0, 0));
         sueldoDE2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         sueldoDE2.setText("0");
         Panel.add(sueldoDE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 200, 50, 20));
 
         capacidadCreE2.setBackground(new java.awt.Color(153, 153, 153));
         capacidadCreE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        capacidadCreE2.setForeground(new java.awt.Color(0, 0, 0));
         capacidadCreE2.setText("0");
         Panel.add(capacidadCreE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 20, -1));
 
         jLabel63.setBackground(new java.awt.Color(153, 153, 153));
         jLabel63.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel63.setForeground(new java.awt.Color(0, 0, 0));
         jLabel63.setText("/");
         Panel.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 330, 20, -1));
 
         sueldoCieE2.setBackground(new java.awt.Color(153, 153, 153));
         sueldoCieE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        sueldoCieE2.setForeground(new java.awt.Color(0, 0, 0));
         sueldoCieE2.setText("0");
         Panel.add(sueldoCieE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 410, 30, -1));
 
         capacidadIntE2.setBackground(new java.awt.Color(153, 153, 153));
         capacidadIntE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        capacidadIntE2.setForeground(new java.awt.Color(0, 0, 0));
         capacidadIntE2.setText("0");
         Panel.add(capacidadIntE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 20, -1));
 
         jLabel66.setBackground(new java.awt.Color(153, 153, 153));
         jLabel66.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel66.setForeground(new java.awt.Color(0, 0, 0));
         jLabel66.setText("/");
         Panel.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, 20, -1));
 
         maxIniE2.setBackground(new java.awt.Color(153, 153, 153));
         maxIniE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        maxIniE2.setForeground(new java.awt.Color(0, 0, 0));
         maxIniE2.setText("50");
         Panel.add(maxIniE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 370, 20, -1));
 
         capacidadIniE2.setBackground(new java.awt.Color(153, 153, 153));
         capacidadIniE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        capacidadIniE2.setForeground(new java.awt.Color(0, 0, 0));
         capacidadIniE2.setText("0");
         Panel.add(capacidadIniE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, 20, -1));
 
         jLabel69.setBackground(new java.awt.Color(153, 153, 153));
         jLabel69.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel69.setForeground(new java.awt.Color(0, 0, 0));
         jLabel69.setText("/");
         Panel.add(jLabel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 370, 20, -1));
 
         maxCieE2.setBackground(new java.awt.Color(153, 153, 153));
         maxCieE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        maxCieE2.setForeground(new java.awt.Color(0, 0, 0));
         maxCieE2.setText("55");
         Panel.add(maxCieE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 410, 20, -1));
 
         capacidadCieE2.setBackground(new java.awt.Color(153, 153, 153));
         capacidadCieE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        capacidadCieE2.setForeground(new java.awt.Color(0, 0, 0));
         capacidadCieE2.setText("0");
         Panel.add(capacidadCieE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 410, 20, -1));
 
         jLabel33.setBackground(new java.awt.Color(153, 153, 153));
         jLabel33.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(0, 0, 0));
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel33.setText("Sueldo");
         Panel.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 60, -1));
 
         jLabel72.setBackground(new java.awt.Color(153, 153, 153));
         jLabel72.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel72.setForeground(new java.awt.Color(0, 0, 0));
         jLabel72.setText("/");
         Panel.add(jLabel72, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 410, 20, -1));
 
         sueldoPME1.setBackground(new java.awt.Color(153, 153, 153));
         sueldoPME1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        sueldoPME1.setForeground(new java.awt.Color(0, 0, 0));
         sueldoPME1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         sueldoPME1.setText("0");
         Panel.add(sueldoPME1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, 50, 20));
 
         maxIntE2.setBackground(new java.awt.Color(153, 153, 153));
         maxIntE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        maxIntE2.setForeground(new java.awt.Color(0, 0, 0));
         maxIntE2.setText("30");
         Panel.add(maxIntE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, 20, -1));
 
         jLabel61.setBackground(new java.awt.Color(153, 153, 153));
         jLabel61.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel61.setForeground(new java.awt.Color(0, 0, 0));
         jLabel61.setText("Sueldo");
         Panel.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 140, 80, -1));
 
         sueldoIntE2.setBackground(new java.awt.Color(153, 153, 153));
         sueldoIntE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        sueldoIntE2.setForeground(new java.awt.Color(0, 0, 0));
         sueldoIntE2.setText("0");
         Panel.add(sueldoIntE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 290, 30, -1));
 
         sueldoCreE2.setBackground(new java.awt.Color(153, 153, 153));
         sueldoCreE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        sueldoCreE2.setForeground(new java.awt.Color(0, 0, 0));
         sueldoCreE2.setText("0");
         Panel.add(sueldoCreE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 330, 30, -1));
 
         sueldoIniE2.setBackground(new java.awt.Color(153, 153, 153));
         sueldoIniE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        sueldoIniE2.setForeground(new java.awt.Color(0, 0, 0));
         sueldoIniE2.setText("0");
         Panel.add(sueldoIniE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 370, 30, -1));
 
         jLabel16.setBackground(new java.awt.Color(153, 153, 153));
         jLabel16.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Ensambladores");
         Panel.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 480, -1, -1));
 
         productoresCieE1.setBackground(new java.awt.Color(153, 153, 153));
         productoresCieE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        productoresCieE1.setForeground(new java.awt.Color(0, 0, 0));
         productoresCieE1.setText("0");
         Panel.add(productoresCieE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, -1, -1));
 
         sueldoCieE1.setBackground(new java.awt.Color(153, 153, 153));
         sueldoCieE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        sueldoCieE1.setForeground(new java.awt.Color(0, 0, 0));
         sueldoCieE1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         sueldoCieE1.setText("0");
         Panel.add(sueldoCieE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 400, 50, 30));
 
         sueldoEE1.setBackground(new java.awt.Color(153, 153, 153));
         sueldoEE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        sueldoEE1.setForeground(new java.awt.Color(0, 0, 0));
         sueldoEE1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         sueldoEE1.setText("0");
         Panel.add(sueldoEE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 500, 50, 30));
 
         jLabel6.setBackground(new java.awt.Color(153, 153, 153));
         jLabel6.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Estudio 2");
         Panel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 370, 160, -1));
 
         jLabel13.setBackground(new java.awt.Color(153, 153, 153));
         jLabel13.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Estudio 1");
         Panel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(733, 146, 160, 20));
 
         jLabel19.setBackground(new java.awt.Color(153, 153, 153));
         jLabel19.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
         jLabel19.setText("Plot Twist");
         Panel.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 450, -1, -1));
 
         capacidadPTE1.setBackground(new java.awt.Color(153, 153, 153));
         capacidadPTE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        capacidadPTE1.setForeground(new java.awt.Color(0, 0, 0));
         capacidadPTE1.setText("0");
         Panel.add(capacidadPTE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 450, 20, -1));
 
         jLabel44.setBackground(new java.awt.Color(153, 153, 153));
         jLabel44.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel44.setForeground(new java.awt.Color(0, 0, 0));
         jLabel44.setText("/");
         Panel.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, 20, -1));
 
         maxPTE1.setBackground(new java.awt.Color(153, 153, 153));
         maxPTE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        maxPTE1.setForeground(new java.awt.Color(0, 0, 0));
         maxPTE1.setText("40");
         Panel.add(maxPTE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 450, 20, -1));
 
         productoresPTE1.setBackground(new java.awt.Color(153, 153, 153));
         productoresPTE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        productoresPTE1.setForeground(new java.awt.Color(0, 0, 0));
         productoresPTE1.setText("0");
         Panel.add(productoresPTE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 450, -1, -1));
 
@@ -1064,32 +984,27 @@ public class VentanaSimulacion extends javax.swing.JFrame {
 
         sueldoPTE1.setBackground(new java.awt.Color(153, 153, 153));
         sueldoPTE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        sueldoPTE1.setForeground(new java.awt.Color(0, 0, 0));
         sueldoPTE1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         sueldoPTE1.setText("0");
         Panel.add(sueldoPTE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 440, 50, 30));
 
         capacidadPTE2.setBackground(new java.awt.Color(153, 153, 153));
         capacidadPTE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        capacidadPTE2.setForeground(new java.awt.Color(0, 0, 0));
         capacidadPTE2.setText("0");
         Panel.add(capacidadPTE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 450, 20, -1));
 
         jLabel73.setBackground(new java.awt.Color(153, 153, 153));
         jLabel73.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel73.setForeground(new java.awt.Color(0, 0, 0));
         jLabel73.setText("/");
         Panel.add(jLabel73, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, 20, -1));
 
         maxPTE2.setBackground(new java.awt.Color(153, 153, 153));
         maxPTE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        maxPTE2.setForeground(new java.awt.Color(0, 0, 0));
         maxPTE2.setText("40");
         Panel.add(maxPTE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 450, 20, -1));
 
         productoresPTE2.setBackground(new java.awt.Color(153, 153, 153));
         productoresPTE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        productoresPTE2.setForeground(new java.awt.Color(0, 0, 0));
         productoresPTE2.setText("0");
         Panel.add(productoresPTE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 450, 20, -1));
 
@@ -1117,7 +1032,6 @@ public class VentanaSimulacion extends javax.swing.JFrame {
 
         sueldoPTE2.setBackground(new java.awt.Color(153, 153, 153));
         sueldoPTE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        sueldoPTE2.setForeground(new java.awt.Color(0, 0, 0));
         sueldoPTE2.setText("0");
         Panel.add(sueldoPTE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 450, 30, -1));
 
@@ -1179,78 +1093,66 @@ public class VentanaSimulacion extends javax.swing.JFrame {
 
         jLabel5.setBackground(new java.awt.Color(153, 153, 153));
         jLabel5.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Neto");
         Panel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, 50, 20));
 
         jLabel7.setBackground(new java.awt.Color(153, 153, 153));
         jLabel7.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Episodios");
         Panel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 410, 80, 20));
 
         jLabel18.setBackground(new java.awt.Color(153, 153, 153));
         jLabel18.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("Ganancia");
         Panel.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 250, 80, 20));
 
         netoE1.setBackground(new java.awt.Color(153, 153, 153));
         netoE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        netoE1.setForeground(new java.awt.Color(0, 0, 0));
         netoE1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         netoE1.setText("0");
         Panel.add(netoE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 280, 50, 20));
 
         gastosE1.setBackground(new java.awt.Color(153, 153, 153));
         gastosE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        gastosE1.setForeground(new java.awt.Color(0, 0, 0));
         gastosE1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         gastosE1.setText("0");
         Panel.add(gastosE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 220, 50, 20));
 
         gananciasE1.setBackground(new java.awt.Color(153, 153, 153));
         gananciasE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        gananciasE1.setForeground(new java.awt.Color(0, 0, 0));
         gananciasE1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         gananciasE1.setText("0");
         Panel.add(gananciasE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 250, 50, 20));
 
         jLabel23.setBackground(new java.awt.Color(153, 153, 153));
         jLabel23.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
         jLabel23.setText("Neto");
         Panel.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 500, 50, 20));
 
         jLabel25.setBackground(new java.awt.Color(153, 153, 153));
         jLabel25.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(0, 0, 0));
         jLabel25.setText("Gastos");
         Panel.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 440, 50, 20));
 
         jLabel27.setBackground(new java.awt.Color(153, 153, 153));
         jLabel27.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(0, 0, 0));
         jLabel27.setText("Ganancia");
         Panel.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 470, 80, 20));
 
         netoE2.setBackground(new java.awt.Color(153, 153, 153));
         netoE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        netoE2.setForeground(new java.awt.Color(0, 0, 0));
         netoE2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         netoE2.setText("0");
         Panel.add(netoE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 500, 50, 20));
 
         gastosE2.setBackground(new java.awt.Color(153, 153, 153));
         gastosE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        gastosE2.setForeground(new java.awt.Color(0, 0, 0));
         gastosE2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         gastosE2.setText("0");
         Panel.add(gastosE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 440, 50, 20));
 
         gananciasE2.setBackground(new java.awt.Color(153, 153, 153));
         gananciasE2.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        gananciasE2.setForeground(new java.awt.Color(0, 0, 0));
         gananciasE2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         gananciasE2.setText("0");
         Panel.add(gananciasE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 470, 50, 20));
@@ -1279,7 +1181,6 @@ public class VentanaSimulacion extends javax.swing.JFrame {
 
         jLabel36.setBackground(new java.awt.Color(153, 153, 153));
         jLabel36.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel36.setForeground(new java.awt.Color(0, 0, 0));
         jLabel36.setText("Dias restantes para lanzamiento del Estudio 2:");
         Panel.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, 330, 40));
 
@@ -1292,13 +1193,11 @@ public class VentanaSimulacion extends javax.swing.JFrame {
 
         jLabel20.setBackground(new java.awt.Color(153, 153, 153));
         jLabel20.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
         jLabel20.setText("Gastos");
         Panel.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 220, 50, 20));
 
         jLabel21.setBackground(new java.awt.Color(153, 153, 153));
         jLabel21.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
         jLabel21.setText("Episodios");
         Panel.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 190, 80, 20));
 
@@ -1319,20 +1218,17 @@ public class VentanaSimulacion extends javax.swing.JFrame {
 
         jLabel37.setBackground(new java.awt.Color(153, 153, 153));
         jLabel37.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel37.setForeground(new java.awt.Color(0, 0, 0));
         jLabel37.setText("Dias restantes para lanzamiento del Estudio 1:");
         Panel.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, 330, 40));
 
         countdownE1.setBackground(new java.awt.Color(153, 153, 153));
         countdownE1.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        countdownE1.setForeground(new java.awt.Color(0, 0, 0));
         countdownE1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         countdownE1.setText("0");
         Panel.add(countdownE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 80, 50, 20));
 
         jLabel34.setBackground(new java.awt.Color(153, 153, 153));
         jLabel34.setFont(new java.awt.Font("NSimSun", 0, 14)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(0, 0, 0));
         jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel34.setText("Faltas");
         Panel.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 60, -1));
@@ -1407,6 +1303,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
             mult = sueldo * num;
             sueldoIntE2.setText(Integer.toString(mult));
             productoresIntE2.setText(Integer.toString(num));
+            arrayIntro[Integer.parseInt(this.productoresIntE2.getText())] = new ProdIntro(counterIntroE2,productoresIntE2,capacidadIntroE2,noEmptyIntroE2,dayDuration,mutexIntroE2,countdownE1);
         }else{
             JOptionPane.showMessageDialog(null, "Numero maximo de producotres alcanzado");
         }                                             
@@ -1533,7 +1430,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarEE2ActionPerformed
 
     private void iniciarEstudiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarEstudiosActionPerformed
-       
+        
 
     }//GEN-LAST:event_iniciarEstudiosActionPerformed
 
