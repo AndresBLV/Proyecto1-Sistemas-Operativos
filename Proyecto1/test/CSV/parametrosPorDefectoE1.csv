@@ -1,0 +1,14 @@
+Dato,Valor
+Durancion-Dia(mili-segundos),3000
+Dias-entre-lanzamientos,30
+capacidad-intro,30,999
+capacidad-creditos,25,999
+capacidad-inicio,50,999
+capacidad-cierre,55,999
+capacidad-plot-twist,40,999
+productores-intro,1
+productores-creditos,4
+prodcutores-inicio,3
+productores-cierre,8
+productores-plot-twist,3
+ensambladores,3

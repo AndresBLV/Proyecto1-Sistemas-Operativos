@@ -5,18 +5,22 @@
  */
 package Interfaces;
 
+import Classes.ArchivoCSV;
+
 /**
  *
  * @author andre
  */
 public class VentanaParametros extends javax.swing.JFrame {
-
+    ArchivoCSV archivo = new ArchivoCSV();
     /**
      * Creates new form Ventana1
      */
     public VentanaParametros() {
         initComponents();
         this.setLocationRelativeTo(null);
+        archivo.leerPorDefectoParametrosE2(duracionDia,diasLanzamiento,capacidadIntroE2,capacidadCreditosE2,capacidadInicioE2,capacidadCierreE2,capacidadPlotTwistE2,productoresIntroE2,productoresCreditosE2,productoresInicioE2,productoresCierreE2,productoresPlotTwistE2, ensambladoresE2);
+        archivo.leerPorDefectoParametrosE1(duracionDia,diasLanzamiento,capacidadIntroE1,capacidadCreditosE1,capacidadInicioE1,capacidadCierreE1,capacidadPlotTwistE1,productoresIntroE1,productoresCreditosE1,productoresInicioE1,productoresCierreE1,productoresPlotTwistE1, ensambladoresE1);
     }
 
     /**
@@ -80,7 +84,7 @@ public class VentanaParametros extends javax.swing.JFrame {
         capacidadPlotTwistE2 = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
         productoresPlotTwistE2 = new javax.swing.JTextField();
-        productoresCamaraFab4 = new javax.swing.JTextField();
+        productoresPlotTwistE1 = new javax.swing.JTextField();
         cambiarParam = new javax.swing.JToggleButton();
         capacidadIntroInf = new javax.swing.JToggleButton();
         capacidadCreditosInf = new javax.swing.JToggleButton();
@@ -446,14 +450,14 @@ public class VentanaParametros extends javax.swing.JFrame {
         productoresPlotTwistE2.setForeground(new java.awt.Color(0, 0, 0));
         productoresPlotTwistE2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         productoresPlotTwistE2.setText("0");
-        jPanel1.add(productoresPlotTwistE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 500, 40, 40));
+        jPanel1.add(productoresPlotTwistE2, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 500, 40, 40));
 
-        productoresCamaraFab4.setBackground(new java.awt.Color(204, 204, 204));
-        productoresCamaraFab4.setFont(new java.awt.Font("NSimSun", 0, 16)); // NOI18N
-        productoresCamaraFab4.setForeground(new java.awt.Color(0, 0, 0));
-        productoresCamaraFab4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        productoresCamaraFab4.setText("0");
-        jPanel1.add(productoresCamaraFab4, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 500, 40, 40));
+        productoresPlotTwistE1.setBackground(new java.awt.Color(204, 204, 204));
+        productoresPlotTwistE1.setFont(new java.awt.Font("NSimSun", 0, 16)); // NOI18N
+        productoresPlotTwistE1.setForeground(new java.awt.Color(0, 0, 0));
+        productoresPlotTwistE1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        productoresPlotTwistE1.setText("0");
+        jPanel1.add(productoresPlotTwistE1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 500, 40, 40));
 
         cambiarParam.setBackground(new java.awt.Color(51, 51, 51));
         cambiarParam.setFont(new java.awt.Font("NSimSun", 0, 16)); // NOI18N
@@ -531,13 +535,48 @@ public class VentanaParametros extends javax.swing.JFrame {
     }//GEN-LAST:event_irParametrosButtonActionPerformed
 
     private void irDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irDashboardButtonActionPerformed
-        this.dispose();
-        VentanaDashboard dashboard = new VentanaDashboard();
-        dashboard.setVisible(true);
+        this.setEnabled(false);
     }//GEN-LAST:event_irDashboardButtonActionPerformed
 
     private void cambiarParamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarParamActionPerformed
-        // TODO add your handling code here:
+        //Estudio 1
+        String cadena1 = "Dato,Valor\n" +
+        "Durancion-Dia(mili-segundos),"+duracionDia.getText()+"\n" +
+        "Dias-entre-lanzamiento,"+diasLanzamiento.getText()+"\n" +
+        "capacidad-intro,"+capacidadIntroE1.getText()+",999\n" +
+        "capacidad-creditos,"+capacidadCreditosE1.getText()+",999\n" +
+        "capacidad-inicio,"+capacidadInicioE1.getText()+",999\n" +
+        "capacidad-cierre,"+capacidadCierreE1.getText()+",999\n" +
+        "capacidad-plot-twist,"+capacidadPlotTwistE1.getText()+",999\n" +        
+        "productores-intro,"+productoresIntroE1.getText()+"\n" +
+        "productores-creditos,"+productoresCreditosE1.getText()+"\n" +
+        "prodcutores-inicio,"+productoresInicioE1.getText()+"\n" +
+        "productores-cierre,"+productoresCierreE1.getText()+"\n" +
+        "productores-plot-twist,"+productoresPlotTwistE1.getText()+"\n" +
+        "ensambladores,"+ensambladoresE1.getText()+"\n";
+        archivo.escribirCvsPorDefectoE1(cadena1);
+        
+        //Estudio 2
+        String cadena2 = "Dato,Valor\n" +
+        "Durancion-Dia(mili-segundos),"+duracionDia.getText()+"\n" +
+        "Dias-entre-lanzamiento,"+diasLanzamiento.getText()+"\n" +
+        "capacidad-intro,"+capacidadIntroE2.getText()+",999\n" +
+        "capacidad-creditos,"+capacidadCreditosE2.getText()+",999\n" +
+        "capacidad-inicio,"+capacidadInicioE2.getText()+",999\n" +
+        "capacidad-cierre,"+capacidadCierreE2.getText()+",999\n" +
+        "capacidad-plot-twist,"+capacidadPlotTwistE2.getText()+",999\n" +        
+        "productores-intro,"+productoresIntroE2.getText()+"\n" +
+        "productores-creditos,"+productoresCreditosE2.getText()+"\n" +
+        "prodcutores-inicio,"+productoresInicioE2.getText()+"\n" +
+        "productores-cierre,"+productoresCierreE2.getText()+"\n" +
+        "productores-plot-twist,"+productoresPlotTwistE2.getText()+"\n" +
+        "ensambladores,"+ensambladoresE2.getText()+"\n";
+        archivo.escribirCvsPorDefectoE2(cadena2);
+        
+        
+        this.dispose();
+        VentanaSimulacion simulacion = new VentanaSimulacion();
+        simulacion.setVisible(true);
     }//GEN-LAST:event_cambiarParamActionPerformed
 
     private void capacidadIntroInfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capacidadIntroInfActionPerformed
@@ -641,7 +680,6 @@ public class VentanaParametros extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField productoresCamaraFab4;
     private javax.swing.JTextField productoresCierreE1;
     private javax.swing.JTextField productoresCierreE2;
     private javax.swing.JTextField productoresCreditosE1;
@@ -650,6 +688,7 @@ public class VentanaParametros extends javax.swing.JFrame {
     private javax.swing.JTextField productoresInicioE2;
     private javax.swing.JTextField productoresIntroE1;
     private javax.swing.JTextField productoresIntroE2;
+    private javax.swing.JTextField productoresPlotTwistE1;
     private javax.swing.JTextField productoresPlotTwistE2;
     // End of variables declaration//GEN-END:variables
 }
