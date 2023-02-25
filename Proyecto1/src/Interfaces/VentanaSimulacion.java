@@ -1334,6 +1334,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
             mult = sueldo * num;
             sueldoCreE2.setText(Integer.toString(mult));
             productoresCreE2.setText(Integer.toString(num));
+            arrayCre[Integer.parseInt(this.productoresCreE2.getText())] = new ProdCre(counterIntroE2,productoresIntE2,capacidadIntroE2,noEmptyIntroE2,dayDuration,mutexIntroE2,countdownE1);
         }else{
             JOptionPane.showMessageDialog(null, "Numero maximo de producotres alcanzado");
         }                                                
