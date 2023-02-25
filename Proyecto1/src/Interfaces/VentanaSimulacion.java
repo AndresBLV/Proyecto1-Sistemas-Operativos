@@ -9,6 +9,8 @@ import java.util.concurrent.Semaphore;
 import Classes.*;
 import clases.*;
 import javax.swing.JOptionPane;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -16,89 +18,184 @@ import javax.swing.JOptionPane;
  * @author andre
  */
 public class VentanaSimulacion extends javax.swing.JFrame {
-    private boolean start;
-    private double tornillosDaily=30;
-    private double tablasDaily=1;//ERRORRRRRRRRRR
-    private double patasDaily=2;
-    
-    
-    private long dayDuration;
-    public static volatile int daysPast;
-    public static volatile int daysToDeliver;
-
-    // Estudio 1
-    public static int maxCapIntroE1;
-    public static int maxCapCreditosE1;
-    public static int maxCapInicioE1;
-    public static int maxCapCierreE1;
-    public static int maxCapPlotTwistE1;
-    
-    public static int counterIntroE1;
-    public static int counterCreditosE1;
-    public static int counterInicioE1;
-    public static int counterCierreE1;
-    public static int counterPlotTwsitE1;
-    
-    public static Semaphore capacidadIntroE1 = new Semaphore(maxCapIntroE1);
-    public static Semaphore capacidadCreditosE1 = new Semaphore(maxCapCreditosE1);
-    public static Semaphore capacidadInicioE1 = new Semaphore(maxCapInicioE1);
-    public static Semaphore capacidadCierreE1 = new Semaphore(maxCapCierreE1);
-    public static Semaphore capacidadPlotTwistE1 = new Semaphore(maxCapPlotTwistE1);
-    
-    public static Semaphore noEmptyIntroE1 = new Semaphore(0);
-    public static Semaphore noEmptyCreditosE1 = new Semaphore(0);   
-    public static Semaphore noEmptyInicioE1 = new Semaphore(0);        
-    public static Semaphore noEmptyCierreE1 = new Semaphore(0);
-    public static Semaphore noEmptyPlotTwistE1 = new Semaphore(0);
-    
-    public static Semaphore mutexIntroE1 = new Semaphore(1);
-    public static Semaphore mutexCreditosE1 = new Semaphore(1);
-    public static Semaphore mutexInicioE1 = new Semaphore(1);
-    public static Semaphore mutexCierreE1 = new Semaphore(1);
-    public static Semaphore mutexPlotTwistE1 = new Semaphore(1);
-    
     // Estudio 2
-    public static int total =13;
+    String cadenaE2 = "";
+    int diasE2;
+    long diaE2 = 0;
+    public static int totalE =13;
     public static int count =0;
-    public static int maxCapIntroE2;
-    public static int maxCapCreditosE2;
-    public static int maxCapInicioE2;
-    public static int maxCapCierreE2;
-    public static int maxCapPlotTwistE2;
     
-    public static int counterIntroE2;
-    public static int counterCreditosE2;
-    public static int counterInicioE2;
-    public static int counterCierreE2;
-    public static int counterPlotTwsitE2;
+    Cola colaLibreIntroE2 = new Cola();
+    Cola colaOcupadoIntroE2 = new Cola();
+    Cola colaLibreCreditosE2 = new Cola();
+    Cola colaOcupadoCreditosE2 = new Cola();
+    Cola colaLibreInicioE2 = new Cola();
+    Cola colaOcupadoInicioE2 = new Cola();
+    Cola colaLibreCierreE2 = new Cola();
+    Cola colaOcupadoCierreE2 = new Cola();
+    Cola colaLibrePlotTwistE2 = new Cola();
+    Cola colaOcupadoPlotTwistE2 = new Cola();
+    Cola colaEnsambladoresLibresE2 = new Cola(); 
+    Cola colaEnsambladoresOcupadosE2 = new Cola();
     
-    public static Semaphore capacidadIntroE2 = new Semaphore(maxCapIntroE2);
-    public static Semaphore capacidadCreditosE2 = new Semaphore(maxCapCreditosE2);
-    public static Semaphore capacidadInicioE2 = new Semaphore(maxCapInicioE2);
-    public static Semaphore capacidadCierreE2 = new Semaphore(maxCapCierreE2);
-    public static Semaphore capacidadPlotTwistE2 = new Semaphore(maxCapPlotTwistE2);
+    Semaphore sem1E2 = new Semaphore(1);
+    Semaphore sem2E2 = new Semaphore(1);
+    Semaphore sem3E2 = new Semaphore(1);
+    Semaphore sem4E2 = new Semaphore(1);
+    Semaphore sem5E2 = new Semaphore(1);
     
-    public static Semaphore noEmptyIntroE2 = new Semaphore(0);
-    public static Semaphore noEmptyCreditosE2 = new Semaphore(0);   
-    public static Semaphore noEmptyInicioE2 = new Semaphore(0);        
-    public static Semaphore noEmptyCierreE2 = new Semaphore(0);
-    public static Semaphore noEmptyPlotTwistE2 = new Semaphore(0);
+    Semaphore mutex1E2 = new Semaphore(1);
+    Semaphore mutex2E2 = new Semaphore(1);
+    Semaphore mutex3E2 = new Semaphore(1);
+    Semaphore mutex4E2 = new Semaphore(1);
+    Semaphore mutex5E2 = new Semaphore(1);
     
-    public static Semaphore mutexIntroE2 = new Semaphore(1);
-    public static Semaphore mutexCreditosE2 = new Semaphore(1);
-    public static Semaphore mutexInicioE2 = new Semaphore(1);
-    public static Semaphore mutexCierreE2 = new Semaphore(1);
-    public static Semaphore mutexPlotTwistE2 = new Semaphore(1);
+    Semaphore capacidadIntroE2;
+    Semaphore capacidadCreditosE2;
+    Semaphore capacidadInicioE2;
+    Semaphore capacidadCierreE2;
+    Semaphore capacidadPlotTwistE2;
     
-    private ProdIntro arrayIntro[];
-    private ProdInicio arrayInicio[];
-    private ProdCierre arrayCierre[];
-    private ProdCre arrayCre[];
-    private ProdPlot arrayPlot[];
+    Semaphore introE2 = new Semaphore(1);
+    Semaphore creditosE2= new Semaphore(1);
+    Semaphore inicioE2= new Semaphore(1);
+    Semaphore cierreE2= new Semaphore(1);
+    Semaphore plottwistE2= new Semaphore(1);
+    
+    Semaphore modCountdownE2 = new Semaphore(1);
+    Thread total2;
+    
+    // Historico
+    String[] historicoLanzamientosE2 = new String[7]; 
+    
+    public void agregarE2(int tipo,Cola libre,Cola ocupada,JLabel trabajador){
+        if (totalE!=0) {
+            // Produtor Intro
+            if (tipo==1) {
+                ProdIntro hiloIntro = new ProdIntro(tipo, capacidadIntE2, sem1E2, capacidadIntroE2, diaE2, introE2,countdownE2);
+                ocupada.Encolar(hiloIntro);
+                hiloIntro.start();
+            }
+            // Produtor Creditos
+            if (tipo==2) {
+                ProdCre hiloCreditos = new ProdCre(tipo, sem2E2, capacidadCreditosE2, capacidadCreE2, diaE2, creditosE2,countdownE2);
+                ocupada.Encolar(hiloCreditos);
+                hiloCreditos.start();
+            }
+            // Produtor Inicio
+            if (tipo==3) {
+                ProdInicio hiloInicio = new ProdInicio(tipo, sem3E2, capacidadIniE2, capacidadInicioE2, diaE2, inicioE2,countdownE2);
+                ocupada.Encolar(hiloInicio);
+                hiloInicio.start();
+            }
+            // Produtor Cierre
+            if (tipo==4) {
+                ProdCierre hiloCierre = new ProdCierre(capacidadCieE2, tipo, sem4E2, capacidadCierreE2, diaE2, cierreE2,countdownE2);
+                ocupada.Encolar(hiloCierre);
+                hiloCierre.start();
+            }
+            // Produtor PlotTwist
+            if (tipo==5) {
+                ProdPlot hiloPlotTwist = new ProdPlot(tipo,sem5E2,capacidadPlotTwistE2,diaE2,plottwistE2,countdownE2,capacidadPTE2);
+                ocupada.Encolar(hiloPlotTwist);
+                hiloPlotTwist.start();
+            }
+            // Ensamblador
+            if (tipo==6) {
+                Ensamblador hiloEnsamblador = new Ensamblador(mutex5E2, mutex4E2, mutex3E2, mutex2E2, mutex1E2, diaE2, tipo, sem1E2, sem2E2, sem3E2, sem4E2, sem5E2, capacidadIntE2, capacidadCreE2, capacidadIniE2, capacidadCieE2, capacidadPTE2, ensambladoresE2, episodiosProducidosE2, capacidadIntroE2, capacidadCreditosE2, capacidadInicioE2, capacidadCierreE2, capacidadPlotTwistE2, countdownE2);
+                ocupada.Encolar(hiloEnsamblador);
+                hiloEnsamblador.start();
+            };
+        }
+    }
+    
+    public void quitarE2(int tipo,Cola ocupado,Cola libre,JLabel trabajadores,Semaphore mutexQuitar,Semaphore semQuitar){
+        if (ocupado.getSize() > 1) {
+        if ( !ocupado.esta_vacia()) {
+            switch (tipo){
+                case 1:{
+                ProdIntro siguiente = (ProdIntro) ocupado.getPfirst().getproceso();
+                ocupado.Desencolar();
+                libre.Encolar(siguiente);
+                mutexQuitar.release();
+                semQuitar.release();
+                siguiente.suspend();
+                }
+                case 2:{
+                ProdCre siguiente = (ProdCre) ocupado.getPfirst().getproceso();
+                ocupado.Desencolar();
+                libre.Encolar(siguiente);
+                mutexQuitar.release();
+                semQuitar.release();
+                siguiente.suspend();
+                }
+                case 3:{
+                ProdInicio siguiente = (ProdInicio) ocupado.getPfirst().getproceso();
+                ocupado.Desencolar();
+                libre.Encolar(siguiente);
+                mutexQuitar.release();
+                semQuitar.release();
+                siguiente.suspend();
+                }
+                case 4:{
+                ProdCierre siguiente = (ProdCierre) ocupado.getPfirst().getproceso();
+                ocupado.Desencolar();
+                libre.Encolar(siguiente);
+                mutexQuitar.release();
+                semQuitar.release();
+                siguiente.suspend();
+                }
+                case 5:{
+                ProdPlot siguiente = (ProdPlot) ocupado.getPfirst().getproceso();
+                ocupado.Desencolar();
+                libre.Encolar(siguiente);
+                mutexQuitar.release();
+                semQuitar.release();
+                siguiente.suspend();
+                }
+                case 6:{
+                Ensamblador siguiente = (Ensamblador) ocupado.getPfirst().getproceso();
+                ocupado.Desencolar();
+                libre.Encolar(siguiente);
+                mutexQuitar.release();
+                semQuitar.release();
+                siguiente.suspend();
+                }
+            }
+        }
+        }
+    }   
     
     public VentanaSimulacion() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setTitle("Estudios");
+        
+        agregarPIntE2.setEnabled(false);
+        agregarPCreE2.setEnabled(false);
+        agregarPIniE2.setEnabled(false);
+        agregarPCieE2.setEnabled(false);
+        agregarPPTE2.setEnabled(false);
+        agregarEE2.setEnabled(false);
+        
+        eliminarPIntE2.setEnabled(false);
+        eliminarPCreE2.setEnabled(false);
+        eliminarPIniE2.setEnabled(false);
+        eliminarPCieE2.setEnabled(false);
+        eliminarPPTE2.setEnabled(false);
+        eliminarEE2.setEnabled(false);
+
+        aggDashboard.setEnabled(false);
+        
+        
+        // Estudio 2
+        diaE2 = archivo.leerPorDefectoE1(diaE2, countdownE2, maxIntE2, maxCreE2, maxIniE2, maxCieE2, maxPTE2);
+        capacidadIntroE2 = new Semaphore(Integer.parseInt(maxIntE2.getText()));
+        capacidadCreditosE2 = new Semaphore(Integer.parseInt(maxCreE2.getText()));
+        capacidadInicioE2 = new Semaphore(Integer.parseInt(maxIniE2.getText()));
+        capacidadCierreE2 = new Semaphore(Integer.parseInt(maxCieE2.getText()));
+        capacidadPlotTwistE2 = new Semaphore(Integer.parseInt(maxPTE2.getText()));
     }
 
     /**
@@ -1288,6 +1385,8 @@ public class VentanaSimulacion extends javax.swing.JFrame {
             mult = mult -sueldo;
             sueldoIntE2.setText(Integer.toString(mult));
             productoresIntE2.setText(Integer.toString(num));
+            quitarE2(1,colaOcupadoIntroE2, colaLibreIntroE2, productoresIntE2, sem1E2, introE2);
+
         }else{
             JOptionPane.showMessageDialog(null, "No hay productores"); 
         }
@@ -1295,7 +1394,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
 
     private void agregarPIntE2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarPIntE2ActionPerformed
         int sueldo = 5;
-        if (count < total) {
+        if (count < totalE) {
             int mult;
             int num = Integer.parseInt(productoresIntE2.getText());
             num += 1;
@@ -1303,7 +1402,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
             mult = sueldo * num;
             sueldoIntE2.setText(Integer.toString(mult));
             productoresIntE2.setText(Integer.toString(num));
-            arrayIntro[Integer.parseInt(this.productoresIntE2.getText())] = new ProdIntro(counterIntroE2,productoresIntE2,capacidadIntroE2,noEmptyIntroE2,dayDuration,mutexIntroE2,countdownE1);
+            agregarE2(1, colaLibreIntroE2, colaOcupadoIntroE2, productoresIntE2);
         }else{
             JOptionPane.showMessageDialog(null, "Numero maximo de producotres alcanzado");
         }                                             
@@ -1319,6 +1418,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
             mult = mult -sueldo;
             sueldoCreE2.setText(Integer.toString(mult));
             productoresCreE2.setText(Integer.toString(num));
+            quitarE2(2,colaOcupadoCreditosE2, colaLibreCreditosE2, productoresCreE2, sem2E2, creditosE2);
         }else{
             JOptionPane.showMessageDialog(null, "No hay productores"); 
         }
@@ -1326,7 +1426,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
 
     private void agregarPCreE2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarPCreE2ActionPerformed
         int sueldo = 3;
-        if (count < total) {
+        if (count < totalE) {
             int mult;
             int num = Integer.parseInt(productoresCreE2.getText());
             num += 1;
@@ -1334,7 +1434,8 @@ public class VentanaSimulacion extends javax.swing.JFrame {
             mult = sueldo * num;
             sueldoCreE2.setText(Integer.toString(mult));
             productoresCreE2.setText(Integer.toString(num));
-            arrayCre[Integer.parseInt(this.productoresCreE2.getText())] = new ProdCre(counterIntroE2,productoresIntE2,capacidadIntroE2,noEmptyIntroE2,dayDuration,mutexIntroE2,countdownE1);
+            agregarE2(2, colaLibreCreditosE2, colaOcupadoCreditosE2, productoresCreE2);
+
         }else{
             JOptionPane.showMessageDialog(null, "Numero maximo de producotres alcanzado");
         }                                                
@@ -1350,6 +1451,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
             mult = mult -sueldo;
             sueldoIniE2.setText(Integer.toString(mult));
             productoresIniE2.setText(Integer.toString(num));
+            quitarE2(3,colaOcupadoInicioE2, colaLibreInicioE2, productoresIniE2, sem3E2, inicioE2);
         }else{
             JOptionPane.showMessageDialog(null, "No hay productores"); 
         }
@@ -1357,7 +1459,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
 
     private void agregarPIniE2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarPIniE2ActionPerformed
         int sueldo = 7;
-        if (count < total) {
+        if (count < totalE) {
             int mult;
             int num = Integer.parseInt(productoresIniE2.getText());
             num += 1;
@@ -1365,6 +1467,8 @@ public class VentanaSimulacion extends javax.swing.JFrame {
             mult = sueldo * num;
             sueldoIniE2.setText(Integer.toString(mult));
             productoresIniE2.setText(Integer.toString(num));
+            agregarE2(3, colaLibreInicioE2, colaOcupadoInicioE2, productoresIniE2);
+
         }else{
             JOptionPane.showMessageDialog(null, "Numero maximo de producotres alcanzado");
         }
@@ -1380,6 +1484,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
             mult = mult -sueldo;
             sueldoCieE2.setText(Integer.toString((int)mult));
             productoresCieE2.setText(Integer.toString(num));
+            quitarE2(4,colaOcupadoCierreE2, colaLibreCierreE2, productoresCieE2, sem4E2, cierreE2);
         }else{
             JOptionPane.showMessageDialog(null, "No hay productores"); 
         }
@@ -1387,7 +1492,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
 
     private void agregarPCieE2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarPCieE2ActionPerformed
         float sueldo = (float)7.5;
-        if (count < total) {
+        if (count < totalE) {
             float mult;
             int num = Integer.parseInt(productoresCieE2.getText());
             num += 1;
@@ -1395,6 +1500,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
             mult = sueldo * num;
             sueldoCieE2.setText(Integer.toString((int)mult));
             productoresCieE2.setText(Integer.toString(num));
+            agregarE2(4, colaLibreCierreE2, colaOcupadoCierreE2, productoresCieE2);
         }else{
             JOptionPane.showMessageDialog(null, "Numero maximo de producotres alcanzado");
         }
@@ -1402,7 +1508,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
 
     private void agregarEE2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarEE2ActionPerformed
         int sueldo = 8;
-        if (count < total) {
+        if (count < totalE) {
             int mult;
             int num = Integer.parseInt(ensambladoresE2.getText());
             num += 1;
@@ -1410,28 +1516,82 @@ public class VentanaSimulacion extends javax.swing.JFrame {
             mult = sueldo * num;
             sueldoEE2.setText(Integer.toString(mult));
             ensambladoresE2.setText(Integer.toString(num));
+            agregarE2(6, colaEnsambladoresLibresE2, colaEnsambladoresOcupadosE2, ensambladoresE2);
         }else{
             JOptionPane.showMessageDialog(null, "Numero maximo de producotres alcanzado");
         }
     }//GEN-LAST:event_agregarEE2ActionPerformed
 
     private void eliminarEE2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarEE2ActionPerformed
-        int sueldo = 8;
-        int num = Integer.parseInt(ensambladoresE2.getText());
-        int mult = Integer.parseInt(sueldoEE2.getText());
-        if (num != 0){
-            num -= 1;
-            count -=1;
-            mult = mult -sueldo;
-            sueldoEE2.setText(Integer.toString(mult));
-            ensambladoresE2.setText(Integer.toString(num));
+        if ( !colaEnsambladoresOcupadosE2.esta_vacia()) {
+            Ensamblador siguiente = (Ensamblador)colaEnsambladoresOcupadosE2.getPfirst().getproceso();
+            colaEnsambladoresOcupadosE2.Desencolar();
+            siguiente.suspend();
+            siguiente.sem1.release();
+            siguiente.sem2.release();
+            siguiente.sem3.release();
+            siguiente.sem4.release();
+            siguiente.sem5.release();
+            int sueldo = 8;
+            int num = Integer.parseInt(ensambladoresE2.getText());
+            int mult = Integer.parseInt(sueldoEE2.getText());
+            if (num != 0){
+                num -= 1;
+                count -=1;
+                mult = mult -sueldo;
+                sueldoEE2.setText(Integer.toString(mult));
+                ensambladoresE2.setText(Integer.toString(num));
+            }
         }else{
-            JOptionPane.showMessageDialog(null, "No hay productores"); 
+            JOptionPane.showMessageDialog(null, "No hay Ensambladores"); 
         }
     }//GEN-LAST:event_eliminarEE2ActionPerformed
 
     private void iniciarEstudiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarEstudiosActionPerformed
+        agregarPIntE2.setEnabled(true);
+        agregarPCreE2.setEnabled(true);
+        agregarPIniE2.setEnabled(true);
+        agregarPCieE2.setEnabled(true);
+        agregarPPTE2.setEnabled(true);
+        agregarEE2.setEnabled(true);
         
+        eliminarPIntE2.setEnabled(true);
+        eliminarPCreE2.setEnabled(true);
+        eliminarPIniE2.setEnabled(true);
+        eliminarPCieE2.setEnabled(true);
+        eliminarPPTE2.setEnabled(true);
+        eliminarEE2.setEnabled(true);
+
+        aggDashboard.setEnabled(false);
+        
+        reiniciar.setEnabled(true);
+        irParametrosButton.setEnabled(false);
+        irDashboardButton.setEnabled(false);
+        irSimulacionButton.setEnabled(false);
+        iniciarEstudios.setEnabled(false);
+        
+        //Estudio2
+        if (colaEnsambladoresOcupadosE2.esta_vacia()) {
+        totalE = archivo.leerPorDefecto2E1(diaE2,totalE,colaLibreIntroE2,colaOcupadoIntroE2,colaLibreCreditosE2,colaOcupadoCreditosE2,colaLibreInicioE2,colaOcupadoInicioE2,colaLibreCierreE2,colaOcupadoCierreE2, colaLibrePlotTwistE2, colaOcupadoPlotTwistE2, productoresIntE2,productoresCreE1,productoresIniE2,productoresCieE2, productoresPTE2, colaEnsambladoresLibresE2,colaEnsambladoresOcupadosE2,ensambladoresE2,capacidadIntE2,capacidadCreE2,capacidadIniE2,capacidadCieE2,capacidadPTE2,episodiosProducidosE2,sem1E2,sem2E2,sem3E2,sem4E2,sem5E2,capacidadIntroE2,capacidadCreditosE2,capacidadInicioE2,capacidadCierreE2,capacidadPlotTwistE2,introE2,creditosE2,inicioE2,cierreE2,plottwistE2,mutex5E2,mutex4E2,mutex3E2,mutex2E2,mutex1E2,countdownE2);
+        }else{
+            diaE2=archivo.leerPorDefectoE1(diaE2, countdownE2, maxIntE2, maxCreE2, maxIniE2, maxCieE2, maxPTE2);
+        }
+        diasE2=Integer.parseInt(countdownE2.getText());
+        Director pagosE2 = new Director(productoresIntE2, productoresCreE2, productoresIniE2, productoresCieE2, productoresPTE2,sueldoIntE2, sueldoCreE2, sueldoIniE2, sueldoCieE2,sueldoPTE2, ensambladoresE2,sueldoEE2,0,diaE2,sueldoPME2,sueldoDE2,countdownE2);
+        pagosE2.start();
+        // PM 
+        ProyectManager PME2 = new ProyectManager(1,diaE2,modCountdownE2, countdownE2, estadoPME2);
+        PME2.start();
+        // Director
+        ProyectManager directorE2 = new ProyectManager(diaE2, 3, modCountdownE2, estadoDirectorE2, countdownE2,episodiosProducidosE2,estadoPME2,sueldoPME2);
+        directorE2.start();
+        
+        ProyectManager totalE2 = new ProyectManager(4,sueldoIntE2, sueldoCreE2, sueldoIniE2, sueldoCieE2, sueldoPTE2, sueldoPME2, sueldoDE2, episodiosProducidosE2, gastosE2, gananciasE2, netoE2,countdownE2,sueldoEE2,reiniciar,aggDashboard,irDashboardButton,irParametrosButton,iniciarEstudios);
+        totalE2.start();
+        
+        total2 = totalE2;
+        ProyectManager diasRestantesE2 = new ProyectManager(diaE2, countdownE2, 2);
+        diasRestantesE2.start();
 
     }//GEN-LAST:event_iniciarEstudiosActionPerformed
 
@@ -1472,7 +1632,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
 
     private void agregarPPTE2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarPPTE2ActionPerformed
         int sueldo = 10;
-        if (count < total) {
+        if (count < totalE) {
             int mult;
             int num = Integer.parseInt(productoresPTE2.getText());
             num += 1;
@@ -1480,6 +1640,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
             mult = sueldo * num;
             sueldoPTE2.setText(Integer.toString((mult)));
             productoresPTE2.setText(Integer.toString(num));
+            agregarE2(5, colaLibrePlotTwistE2, colaOcupadoPlotTwistE2, productoresPTE2);
         }else{
             JOptionPane.showMessageDialog(null, "Numero maximo de producotres alcanzado");
         }
@@ -1495,6 +1656,7 @@ public class VentanaSimulacion extends javax.swing.JFrame {
             mult = mult -sueldo;
             sueldoPTE2.setText(Integer.toString(mult));
             productoresPTE2.setText(Integer.toString(num));
+            quitarE2(5,colaOcupadoPlotTwistE2, colaLibrePlotTwistE2, productoresPTE2, sem5E2, plottwistE2);
         }else{
             JOptionPane.showMessageDialog(null, "No hay productores"); 
         }

@@ -14,7 +14,7 @@ import javax.swing.JLabel;
  *
  * @author andre
  */
-public class ProdPlot {
+public class ProdPlot extends Thread{
 
     public boolean stop;
     String Treadname;
@@ -38,17 +38,5 @@ public class ProdPlot {
        this.PT=PT;
        this.area13=tiempo;
     }
-    
-    public void StopToggle(){
-        this.stop=!this.stop;
-    }
-    
-    public void run(){
-        
-    }
-    
-    synchronized void cuenta() throws InterruptedException{
-        
-    } 
-    
+
 }

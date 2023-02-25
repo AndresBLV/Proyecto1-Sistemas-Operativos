@@ -38,16 +38,5 @@ public class ProdIntro extends Thread{
         this.area13=tiempo;
         
     }
-    public void StopToggle(){
-        this.stop=!this.stop;
-    }
-    
-    @Override
-    public void run(){
-        
-    }
-    
-    synchronized void cuenta() throws InterruptedException{
-        
-    }
 }
+    

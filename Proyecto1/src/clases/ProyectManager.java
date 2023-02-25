@@ -8,7 +8,9 @@ import static java.lang.Thread.sleep;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JLabel;
+
 /**
  *
  * @author andre
@@ -16,48 +18,211 @@ import javax.swing.JLabel;
 public class ProyectManager extends Thread{
     
     public boolean stop;
-    String Treadname;
-    int tipo;
-    
-    JLabel area1;
-    JLabel area2;
-    JLabel area3;
-    JLabel area4;
-    JLabel areaPT;
-    JLabel area5;
-    JLabel area6;
-    JLabel area7;
-    JLabel area8;
-    JLabel area9;
-    JLabel area10;
-    JLabel area11;
-    JLabel area12;
-    JLabel area13;
-    
+    JLabel countdown;
+    Semaphore modCountdown;
+    String RM = "El PM esta viendo Rick y Morty";
+    String trabajo = "El PM esta revisando sprint reviews";
+    String modC = "El PM esta disminuyendo el contador";
+    JLabel accion;
+    JLabel dias;
     long dia;
-   
+    int actual;
+    int tipo;
+    JLabel episodio;
+    JLabel accionPM;
+    int ruta=0;
     
+    JLabel sueldoIntro;
+    JLabel sueldoCreditos;
+    JLabel sueldoInicio;
+    JLabel sueldoCierre;
+    JLabel sueldoPT;
+    JLabel sueldoEnsamblador;
+    JLabel sueldoPM;
+    JLabel sueldoDirector;
+    JLabel episodios;
+    JLabel gastos;
+    JLabel ganacias;
+    JLabel neto;
     
-  
+    JButton boton1;
+    JButton boton2;
+    JButton boton3;
+    JButton boton4;
+    JButton boton5;
     
-    public ProyectManager(JLabel intro,JLabel creditos,JLabel inicio,JLabel cierre,JLabel plottwist, JLabel intro1,JLabel creditos2,JLabel inicio3,JLabel cierre4,JLabel plottwist5,JLabel ensamblador6,JLabel t7,int tipo,long dia,JLabel pm8,JLabel director9,JLabel tiempo ){
-        this.stop = true;
-        this.area1 = intro;
-        this.area2 = creditos;
-        this.area3 = inicio;
-        this.area4 = cierre;
-        this.areaPT = plottwist;
-        this.area5 = intro1;
-        this.area6 = creditos2;
-        this.area7= inicio3;
-        this.area8 = cierre4;
-        this.area9 = ensamblador6;
-        this.area10 = t7;
-        this.tipo = tipo;
-        this.dia = dia;
-        this.area11 = pm8;
-        this.area12=director9;
-        this.area13=tiempo; 
+    public ProyectManager(int tipo,long dia,Semaphore mod,JLabel countdown,JLabel accion){
+        this.stop=true;
+        this.modCountdown = mod;
+        this.countdown = countdown;
+        this.accion=accion;
+        this.dias=dias;
+        this.dia=dia;
+        this.actual=Integer.parseInt(countdown.getText())+1;
+        this.tipo=tipo;
+        
+    }
+    public ProyectManager(long dia,int tipo,Semaphore mod,JLabel accion,JLabel countdown,JLabel episodio,JLabel accionPM,JLabel saldoPM){
+        this.stop=true;
+        this.modCountdown = mod;
+        this.countdown = countdown;
+        this.accion=accion;
+        this.dias=dias;
+        this.dia=dia;
+        this.actual=Integer.parseInt(countdown.getText())+1;
+        this.tipo=tipo;
+        this.episodio=episodio;
+        this.accionPM = accionPM;
+        this.sueldoPM = saldoPM;
+        
+    }
+    public ProyectManager(long dia,JLabel count,int tipo){
+        this.stop=true;
+        this.tipo=tipo;
+        this.countdown=count;
+        this.dia=dia;
+    }
+    public ProyectManager(int tipo,JLabel gastoIntro,JLabel gastoCreditos,JLabel gastoInicio,JLabel gastoCierre,JLabel gastoPT, JLabel sueldoPM, JLabel sueldoDirector,JLabel episodio,JLabel gastos,JLabel ganacias,JLabel neto,JLabel countdown,JLabel sueldoEnsamblador,JButton boton1,JButton boton2,JButton boton3,JButton boton4,JButton boton5){
+      this.stop = true;
+       this.tipo = tipo;
+      this.sueldoIntro = gastoIntro;
+      this.sueldoCreditos = gastoCreditos;
+      this.sueldoInicio = gastoInicio;
+      this.sueldoCierre = gastoCierre;
+      this.sueldoPT = gastoPT;
+      this.sueldoPM = sueldoPM;
+      this.sueldoDirector = sueldoDirector;
+      this.episodios = episodio;
+      this.gastos = gastos;
+      this.ganacias = ganacias;
+      this.neto = neto;
+      this.countdown = countdown;
+      this.actual = Integer.parseInt(countdown.getText())+1;
+      this.sueldoEnsamblador = sueldoEnsamblador;
+      this.boton1 = boton1;
+      this.boton2 = boton2;
+      this.boton3 = boton3;
+      this.boton4 = boton4;
+      this.boton5 = boton5;
+    }
+    
+    public void StopToggle(){
+        this.stop=!this.stop;
+    }
+    public void run(){            
+        if (tipo==1) {
+       try {
+           while (this.stop) {   
+               if (Integer.parseInt(countdown.getText())!=actual) {       
+               modCountdown.acquire();
+               accion.setText(modC);
+               sleep(dia/10);
+               modCountdown.release();
+                   if (Integer.parseInt(countdown.getText())==0) {
+                       this.StopToggle();
+                   }
+               actual--;
+               }
+               accion.setText(RM);
+               sleep(dia/72); //revisar esto
+               accion.setText(trabajo);
+               sleep(dia/72); //revisar esto
+               
+           }
+       } catch (InterruptedException ex) {
+           Logger.getLogger(ProyectManager.class.getName()).log(Level.SEVERE, null, ex);
+       }
+    }
+        if (tipo==2) {
+            while (Integer.parseInt(countdown.getText())!=0) {                 
+                try {
+                    sleep(dia);
+                    countdown.setText((Integer.toString((Integer.parseInt(countdown.getText()))-1)));
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(ProyectManager.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }
+            
+        }
+           if (tipo==3) {
+            while (this.stop) {   
+                if (ruta <= 0) {
+                   if (modCountdown.availablePermits()==0) {
+                       while (modCountdown.availablePermits()==0) {   
+                           accion.setText("Esperando para leer el cartel");
+                       }
+                   
+                   accion.setText("Leyendo el cartel");
+                   long max1=dia*3/2;
+                   long min1=dia/2;
+                   ruta = (int)(Math.random()*(max1-min1+1)+min1);
+                    try {
+                        sleep(dia/288);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(ProyectManager.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                   try {
+                       modCountdown.acquire();
+                       if (Integer.parseInt(countdown.getText())==0) {
+                           sleep(dia);
+                           System.out.println("dia despacho");
+                           this.StopToggle();
+                           modCountdown.release();
+                       }    
+                       modCountdown.release();
+                   } catch (InterruptedException ex) {
+                       Logger.getLogger(ProyectManager.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+                }
+                   
+
+                try {
+                   accion.setText("Dando vueltas por el estudio");
+                   long max2=dia/16;
+                   long min2=dia/48;
+                   int tiempo = (int)(Math.random()*(max2-min2+1)+min2);
+                   sleep(tiempo);
+                   ruta=ruta-tiempo;
+                   accion.setText("Revisando al PM");
+                    if (accionPM.getText()==RM) {
+                        sueldoPM.setText(Integer.toString(Integer.parseInt(sueldoPM.getText())-1));
+                    }
+                    sleep(dia/288);
+                    ruta-=dia/288;
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(ProyectManager.class.getName()).log(Level.SEVERE, null, ex);
+                }
+        }
+        }
+           if (tipo==4) {
+           while (this.stop) {  
+               if (Integer.parseInt(countdown.getText())==0) {
+                   try {
+                       sleep(dia*2);
+                   } catch (InterruptedException ex) {
+                       Logger.getLogger(ProyectManager.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+                       gastos.setText(Integer.toString(Integer.parseInt(sueldoIntro.getText())+Integer.parseInt(sueldoCreditos.getText())+Integer.parseInt(sueldoInicio.getText())+Integer.parseInt(sueldoCierre.getText())+Integer.parseInt(sueldoPT.getText())+Integer.parseInt(sueldoEnsamblador.getText())+Integer.parseInt(sueldoPM.getText())+Integer.parseInt(sueldoDirector.getText())));
+                       ganacias.setText(Integer.toString(Integer.parseInt(episodios.getText())*((1100000/150000)*100000)));
+                       neto.setText(Integer.toString(Integer.parseInt(ganacias.getText())-Integer.parseInt(gastos.getText())));
+                       boton1.setEnabled(true);
+                       boton2.setEnabled(true);
+                       boton3.setEnabled(true);
+                       boton4.setEnabled(true);
+                       boton5.setEnabled(true);
+
+                   }
+                   gastos.setText(Integer.toString(Integer.parseInt(sueldoIntro.getText())+Integer.parseInt(sueldoCreditos.getText())+Integer.parseInt(sueldoInicio.getText())+Integer.parseInt(sueldoCierre.getText())+Integer.parseInt(sueldoPT.getText())+Integer.parseInt(sueldoEnsamblador.getText())+Integer.parseInt(sueldoPM.getText())+Integer.parseInt(sueldoDirector.getText())));
+                   ganacias.setText(Integer.toString(Integer.parseInt(episodios.getText())*((1100000/150000)*100000)));
+                   neto.setText(Integer.toString(Integer.parseInt(ganacias.getText())-Integer.parseInt(gastos.getText())));
+               
+               
+
+       }
+    }
+    
     }
 
 }
