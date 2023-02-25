@@ -35,11 +35,11 @@ public class ProcesosE1 extends Thread{
     JLabel area12;
     JLabel area13;
     
-    Semaphore sem1;
-    Semaphore sem2;
-    Semaphore sem3;
-    Semaphore sem4;
-    Semaphore sem5;
+    public Semaphore sem1;
+    public Semaphore sem2;
+    public Semaphore sem3;
+    public Semaphore sem4;
+    public Semaphore sem5;
     
     Semaphore intro;
     Semaphore creditos;
@@ -145,7 +145,7 @@ public class ProcesosE1 extends Thread{
         this.area13=tiempo;
     }
     
-    public ProcesosE1(Semaphore mutex4,Semaphore mutex3,Semaphore mutex2,Semaphore mutex1,long dia,int tipo,Semaphore sem1,Semaphore sem2,Semaphore sem3,Semaphore sem4,JLabel intros,JLabel creditos,JLabel inicios,JLabel cierres,JLabel plottwists,JLabel AreaE,JLabel AreaT,Semaphore intro,Semaphore credito,Semaphore inicio,Semaphore cierre,Semaphore plottwist,JLabel tiempo ){
+    public ProcesosE1(Semaphore mutex5, Semaphore mutex4,Semaphore mutex3,Semaphore mutex2,Semaphore mutex1,long dia,int tipo,Semaphore sem1,Semaphore sem2,Semaphore sem3,Semaphore sem4,Semaphore sem5, JLabel intros,JLabel creditos,JLabel inicios,JLabel cierres,JLabel plottwists,JLabel AreaE,JLabel AreaT,Semaphore intro,Semaphore credito,Semaphore inicio,Semaphore cierre,Semaphore plottwist,JLabel tiempo ){
         this.stop = true;
         this.dia = dia;
         this.tipo =tipo;
@@ -153,6 +153,7 @@ public class ProcesosE1 extends Thread{
         this.sem2 = sem2;
         this.sem3 = sem3;
         this.sem4 = sem4;
+        this.sem5 = sem5;
         this.area1 = inicios;
         this.area2 = creditos;
         this.area3 = inicios;
@@ -169,6 +170,7 @@ public class ProcesosE1 extends Thread{
         this.colitaE2 = mutex2;
         this.colitaE3 = mutex3;
         this.colitaE4 = mutex4;
+        this.colitaE5 = mutex5;
         this.area13=tiempo;
                  
     }
@@ -433,7 +435,7 @@ public class ProcesosE1 extends Thread{
                 ArchivoCSV archiCsv = new ArchivoCSV();
                 String capacidadIntro = archiCsv.leerCsvParametrosPorDefectoCapacidadIntroE1();
                 colitaE1.acquire();
-                while (intro.availablePermits() > Integer.parseInt(capacidadIntro)-1) {                     
+                while (intro.availablePermits() > Integer.parseInt(capacidadIntro)-1) {    //<--intro necesaria para ensamblar el cap                 
                 }
                 sem1.acquire();
                 intro.release(1);
@@ -442,38 +444,38 @@ public class ProcesosE1 extends Thread{
                 colitaE1.release();
                 colitaE2.acquire();
                 String capacidadCreditos = archiCsv.leerCsvParametrosPorDefectoCapacidadCreditosE1();
-                while (creditos.availablePermits()>Integer.parseInt(capacidadCreditos)-3) {                        
+                while (creditos.availablePermits()>Integer.parseInt(capacidadCreditos)-1) { //<--creditos necesarios para ensamblar el cap                      
                 }
                 sem2.acquire();
-                creditos.release(3);
-                area2.setText(Integer.toString(Integer.parseInt(area2.getText())-3));
+                creditos.release(1);
+                area2.setText(Integer.toString(Integer.parseInt(area2.getText())-1));
                 sem2.release();
                 colitaE2.release();
                 colitaE3.acquire();
                 String capacidadInicio = archiCsv.leerCsvParametrosPorDefectoCapacidadInicioE1();
-                while (inicio.availablePermits()>Integer.parseInt(capacidadInicio)-1) {  
+                while (inicio.availablePermits()>Integer.parseInt(capacidadInicio)-2) {  //<--inicios necesarios para ensamblar el cap
                 }
                 sem3.acquire();
-                inicio.release();
-                area3.setText(Integer.toString(Integer.parseInt(area3.getText())-1));
+                inicio.release(2);
+                area3.setText(Integer.toString(Integer.parseInt(area3.getText())-2));
                 sem3.release();
                 colitaE3.release();
                 colitaE4.acquire();
                 String capacidadCierre = archiCsv.leerCsvParametrosPorDefectoCapacidadCierreE1();
-                while (cierre.availablePermits()>Integer.parseInt(capacidadCierre)-4) {                        
+                while (cierre.availablePermits()>Integer.parseInt(capacidadCierre)-2) {  //<-- cierres necesarios para ensamblar el cap                      
                 }
                 sem4.acquire();
-                cierre.release(4);
-                area4.setText(Integer.toString(Integer.parseInt(area4.getText())-4));
+                cierre.release(2);
+                area4.setText(Integer.toString(Integer.parseInt(area4.getText())-2));
                 sem4.release();
                 colitaE4.release();
                 colitaE5.acquire();
                 String capacidadPlotTwist = archiCsv.leerCsvParametrosPorDefectoCapacidadPlotTwistE1();
-                while (intro.availablePermits() > Integer.parseInt(capacidadPlotTwist)-1) {                     
+                while (intro.availablePermits() > Integer.parseInt(capacidadPlotTwist)-2) { //<-- plot twists necesarios para ensamblar el cap                    
                 }
                 sem5.acquire();
-                plottwist.release(1);
-                areaPT.setText(Integer.toString(Integer.parseInt(areaPT.getText())-1));
+                plottwist.release(2);
+                areaPT.setText(Integer.toString(Integer.parseInt(areaPT.getText())-2));
                 sem5.release();
                 colitaE5.release();
                 area6.setText(Integer.toString(Integer.parseInt(area6.getText())+1));
@@ -488,6 +490,10 @@ public class ProcesosE1 extends Thread{
         }
 
     
+    }
+
+    void setText(String toString) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

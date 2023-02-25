@@ -82,38 +82,38 @@ public class ArchivoCSV {
         return lanzamientos;
     }
     
-//    public String leerCsvParametrosPorDefecto(){
-//        String diasLanzamiento = "";
-//        String line;
-//        String lanzamientosCsv = "";
-//        String path = "test\\escribirCvsPorDefectoE1.csv";
-//        File file = new File(path);
-//        try {
-//            if(!file.exists()){
-//                file.createNewFile();
-//            }else{
-//                FileReader fr = new FileReader(file);
-//                BufferedReader br = new BufferedReader(fr);
-//                while ((line = br.readLine()) != null){
-//                    if (!line.isEmpty()){
-//                        lanzamientosCsv += line + "\n";
-//                    }
-//                }
-//                
-//                if (!"".equals(lanzamientosCsv)){
-//                    String[] lanzamientos_split = lanzamientosCsv.split("\n");
-//                    for (int i = 0; i < 3; i++) {
-//                        String[] lanzamiento = lanzamientos_split[i].split(",");
-//                        lanzamientosCsv = lanzamiento[1];
-//                        
-//                    }
-//                }
-//                br.close();
-//            }
-//        } catch (Exception e) {
-//        }
-//        return diasLanzamiento;
-//    }
+    public String leerCsvParametrosPorDefecto(){
+        String diasLanzamiento = "";
+        String line;
+        String lanzamientosCsv = "";
+        String path = "test\\parametrosPorDefectoE1.csv";
+        File file = new File(path);
+        try {
+            if(!file.exists()){
+                file.createNewFile();
+            }else{
+                FileReader fr = new FileReader(file);
+                BufferedReader br = new BufferedReader(fr);
+                while ((line = br.readLine()) != null){
+                    if (!line.isEmpty()){
+                        lanzamientosCsv += line + "\n";
+                    }
+                }
+                
+                if (!"".equals(lanzamientosCsv)){
+                    String[] lanzamientos_split = lanzamientosCsv.split("\n");
+                    for (int i = 0; i < 3; i++) {
+                        String[] lanzamiento = lanzamientos_split[i].split(",");
+                        lanzamientosCsv = lanzamiento[1];
+                        
+                    }
+                }
+                br.close();
+            }
+        } catch (Exception e) {
+        }
+        return diasLanzamiento;
+    }
     public String leerCsvParametrosPorDefectoCapacidadIntroE1(){
         String capacidadTotal = "";
         String line;
@@ -413,61 +413,61 @@ public class ArchivoCSV {
         } catch (Exception e) {
         }
     }
-//    public long leerPorDefectoE1(long dia,JLabel count,JLabel capacidadIntro,JLabel capacidadCreditos,JLabel capacidadInicio,JLabel capacidadCierre, JLabel capacidadPlotTwist){
-//        String aux="";   
-//        String texto="";
-//        try
-//        {  
-//            FileReader archivos=new FileReader("test\\parametrosPorDefectoE1.csv");
-//            BufferedReader lee=new BufferedReader(archivos);
-//            while((aux=lee.readLine())!=null)
-//            {
-//               texto+= aux+ "\n";
-//            }
-//
-//            if (!"".equals(texto) && !texto.isEmpty()){
-//                String[] txt_split= texto.split("\n");
-//                char espacio=' ';
-//                for (int i = 1; i < txt_split.length; i++) {
-//                    if (txt_split[0].contains(",")) {
-//                    String[] datos = txt_split[i].split(",");
-//                    for (int j = 0; j < datos.length; j++) {
-//                        if (datos[j].charAt(0)==espacio) {
-//                            datos[j]=datos[j].replaceFirst(" ","");
-//                        }
-//                        if (i==1) {
-//                            dia = Long.parseLong(datos[1]);
-//                        }if (i==2) {
-//                            count.setText(datos[1]);
-//                        }if (i==3) {
-//                            capacidadIntro.setText(datos[1]);
-//                        }if (i==4) {
-//                            capacidadCreditos.setText(datos[1]);
-//                        }if (i==5) {
-//                            capacidadInicio.setText(datos[1]);
-//                        }if (i==6) {
-//                            capacidadCierre.setText(datos[1]);
-//                        }
-//                        if (i==7) {
-//                            capacidadPlotTwist.setText(datos[1]);
-//                        }
-//                        }
-//                        
-//                            
-//                        }
-//                    }
-//                }
-//            
-//            lee.close();      
-//     
-//        }catch(IOException ex)
-//         {
-//           JOptionPane.showMessageDialog(null,ex+"" +
-//                 "\nNo se ha encontrado el archivo",
-//                       "ADVERTENCIA!!!",JOptionPane.WARNING_MESSAGE);
-//          } 
-//        return dia;
-//}
+    public long leerPorDefectoE1(long dia,JLabel count,JLabel capacidadIntro,JLabel capacidadCreditos,JLabel capacidadInicio,JLabel capacidadCierre, JLabel capacidadPlotTwist){
+        String aux="";   
+        String texto="";
+        try
+        {  
+            FileReader archivos=new FileReader("test\\parametrosPorDefectoE1.csv");
+            BufferedReader lee=new BufferedReader(archivos);
+            while((aux=lee.readLine())!=null)
+            {
+               texto+= aux+ "\n";
+            }
+
+            if (!"".equals(texto) && !texto.isEmpty()){
+                String[] txt_split= texto.split("\n");
+                char espacio=' ';
+                for (int i = 1; i < txt_split.length; i++) {
+                    if (txt_split[0].contains(",")) {
+                    String[] datos = txt_split[i].split(",");
+                    for (int j = 0; j < datos.length; j++) {
+                        if (datos[j].charAt(0)==espacio) {
+                            datos[j]=datos[j].replaceFirst(" ","");
+                        }
+                        if (i==1) {
+                            dia = Long.parseLong(datos[1]);
+                        }if (i==2) {
+                            count.setText(datos[1]);
+                        }if (i==3) {
+                            capacidadIntro.setText(datos[1]);
+                        }if (i==4) {
+                            capacidadCreditos.setText(datos[1]);
+                        }if (i==5) {
+                            capacidadInicio.setText(datos[1]);
+                        }if (i==6) {
+                            capacidadCierre.setText(datos[1]);
+                        }
+                        if (i==7) {
+                            capacidadPlotTwist.setText(datos[1]);
+                        }
+                        }
+                        
+                            
+                        }
+                    }
+                }
+            
+            lee.close();      
+     
+        }catch(IOException ex){
+           JOptionPane.showMessageDialog(null,ex+"" +
+                 "\nNo se ha encontrado el archivo",
+                       "ADVERTENCIA!!!",JOptionPane.WARNING_MESSAGE);
+        } 
+        return dia;
+    }
+    
 //    public long leerPorDefectoE2(long dia,JLabel count,JLabel almap,JLabel almab,JLabel almapc,JLabel almac){
 //        String aux="";   
 //        String texto="";
@@ -520,86 +520,94 @@ public class ArchivoCSV {
 //          } 
 //        return dia;
 //}
-//    public int leerPorDefecto2Fab1(long dia,int empleados,cola2 librep,cola2 ocup, cola2 libreb,cola2 ocub,cola2 librepc,cola2 ocupc,cola2 librec,cola2 ocuc,JLabel produP,JLabel produB,JLabel produPc,JLabel produC,cola2 libreE,cola2 ocuE,JLabel ensam,JLabel almap,JLabel almab,JLabel almapc,JLabel almac,JLabel telef,Semaphore sem,Semaphore sem2,Semaphore sem3,Semaphore sem4,Semaphore AP,Semaphore AB,Semaphore APC,Semaphore AC,Semaphore p,Semaphore b,Semaphore pc,Semaphore c,Semaphore mutex4,Semaphore mutex3,Semaphore mutex2,Semaphore mutex,JLabel countdown){
-//         String aux="";   
-//        String texto="";
-//        try
-//        {  
-//            FileReader archivos=new FileReader("test\\parametrosPorDefectoFab1.csv");
-//            BufferedReader lee=new BufferedReader(archivos);
-//            while((aux=lee.readLine())!=null)
-//            {
-//               texto+= aux+ "\n";
-//            }
-//
-//            if (!"".equals(texto) && !texto.isEmpty()){
-//                String[] txt_split= texto.split("\n");
-//                char espacio=' ';
-//                for (int i = 1; i < txt_split.length; i++) {
-//                    if (txt_split[0].contains(",")) {
-//                    String[] datos = txt_split[i].split(",");
-//                    for (int j = 0; j < datos.length; j++) {
-//                        if (datos[j].charAt(0)==espacio) {
-//                            datos[j]=datos[j].replaceFirst(" ","");
-//                        }if (i==2) {
-//                            countdown.setText(datos[1]);
-//                        }if (i==7&&j==1) {
-//                            for (int k = 0; k < Integer.parseInt(datos[1]); k++) {
-//                                ProcesosFab1 hilop = new ProcesosFab1(1, almap, sem, AP, dia, p,countdown);
-//                                ocup.Encolar(hilop);
-//                                hilop.start();
-//                                produP.setText(Integer.toString(Integer.parseInt(produP.getText())+1));
-//                                empleados--;
-//                            }
-//                        }if (i==8&&j==1) {
-//                           for (int k = 0; k < Integer.parseInt(datos[1]); k++) {
-//                               ProcesosFab1 hiloB = new ProcesosFab1(2, sem2, AB, almab, dia, b,countdown);
-//                                hiloB.start();
-//                                ocub.Encolar(hiloB);
-//                                produB.setText(Integer.toString(Integer.parseInt(produB.getText())+1));
-//                                empleados--;
-//                            }
-//                        }if (i==9&&j==1) {
-//                            for (int k = 0; k < Integer.parseInt(datos[1]); k++) {
-//                                ProcesosFab1 hiloPc = new ProcesosFab1(3, sem3, almapc, APC, dia, pc,countdown);
-//                                hiloPc.start();
-//                                ocupc.Encolar(hiloPc);
-//                                produPc.setText(Integer.toString(Integer.parseInt(produPc.getText())+1));
-//                                empleados--;
-//                            }
-//                           
-//                        }if (i==10&&j==1) {
-//                           for (int k = 0; k < Integer.parseInt(datos[1]); k++) {
-//                               ProcesosFab1 hiloC = new ProcesosFab1(almac, 4, sem4, AC, dia, c,countdown);
-//                                hiloC.start();
-//                                ocuc.Encolar(hiloC);
-//                                produC.setText(Integer.toString(Integer.parseInt(produC.getText())+1));
-//                                empleados--;
-//                            }
-//                        }if (i==11&&j==1) {
-//                           for (int k = 0; k < Integer.parseInt(datos[1]); k++) {
-//                               ProcesosFab1 hiloE = new ProcesosFab1(mutex4, mutex3, mutex2, mutex, dia, 5, sem, sem2, sem3, sem4, almap, almab, almapc, almac, ensam, telef, AP, AB, APC, AC,countdown);
-//                                hiloE.start();
-//                                ocuE.Encolar(hiloE);
-//                                ensam.setText(Integer.toString(Integer.parseInt(ensam.getText())+1));
-//                                empleados--;
-//                            }
-//                        }
-//                    }
-//                        }
-//                    }
-//                }
-//            
-//            lee.close();      
-//     
-//        }catch(IOException ex)
-//         {
-//           JOptionPane.showMessageDialog(null,ex+"" +
-//                 "\nNo se ha encontrado el archivo",
-//                       "ADVERTENCIA!!!",JOptionPane.WARNING_MESSAGE);
-//          } 
-//        return empleados;
-//}
+    public int leerPorDefecto2E1(long dia,int empleados,ColaE1 libreIntro,ColaE1 ocupadoIntro, ColaE1 libreCreditos,ColaE1 ocupadoCreditos,ColaE1 libreInicio,ColaE1 ocupadoInicio,ColaE1 libreCierre,ColaE1 ocupadoCierre,ColaE1 librePT, ColaE1 ocupadoPT, JLabel productorIntro,JLabel productorCreditos,JLabel productorInicio,JLabel productorCierre, JLabel productorPT, ColaE1 libreEnsamblador,ColaE1 ocupadoEnsamblador,JLabel ensamblador,JLabel capacidadIntro,JLabel capacidadCreditos,JLabel capacidadInicio,JLabel capacidadCierre, JLabel capacidadPT, JLabel episodiosE1,Semaphore sem1,Semaphore sem2,Semaphore sem3,Semaphore sem4, Semaphore sem5, Semaphore CInt,Semaphore CCre,Semaphore CIni,Semaphore CCie, Semaphore CPT, Semaphore intro,Semaphore creditos,Semaphore inicio,Semaphore cierre, Semaphore plottwist, Semaphore mutex5, Semaphore mutex4,Semaphore mutex3,Semaphore mutex2,Semaphore mutex1,JLabel countdown){
+         String aux="";   
+        String texto="";
+        try
+        {  
+            FileReader archivos=new FileReader("test\\parametrosPorDefectoE1.csv");
+            BufferedReader lee=new BufferedReader(archivos);
+            while((aux=lee.readLine())!=null)
+            {
+               texto+= aux+ "\n";
+            }
+
+            if (!"".equals(texto) && !texto.isEmpty()){
+                String[] txt_split= texto.split("\n");
+                char espacio=' ';
+                for (int i = 1; i < txt_split.length; i++) {
+                    if (txt_split[0].contains(",")) {
+                    String[] datos = txt_split[i].split(",");
+                    for (int j = 0; j < datos.length; j++) {
+                        if (datos[j].charAt(0)==espacio) {
+                            datos[j]=datos[j].replaceFirst(" ","");
+                        }if (i==2) {
+                            countdown.setText(datos[1]);
+                        }if (i==8&&j==1) {
+                            for (int k = 0; k < Integer.parseInt(datos[1]); k++) {
+                                ProcesosE1 hiloIntro = new ProcesosE1(1, capacidadIntro, sem1, CInt, dia, intro,countdown);
+                                ocupadoIntro.Encolar(hiloIntro);
+                                hiloIntro.start();
+                                productorIntro.setText(Integer.toString(Integer.parseInt(productorIntro.getText())+1));
+                                empleados--;
+                            }
+                        }if (i==9&&j==1) {
+                           for (int k = 0; k < Integer.parseInt(datos[1]); k++) {
+                               ProcesosE1 hiloCreditos = new ProcesosE1(2, sem2, CCre, capacidadCreditos, dia, creditos,countdown);
+                                hiloCreditos.start();
+                                ocupadoCreditos.Encolar(hiloCreditos);
+                                productorCreditos.setText(Integer.toString(Integer.parseInt(productorCreditos.getText())+1));
+                                empleados--;
+                            }
+                        }if (i==10&&j==1) {
+                            for (int k = 0; k < Integer.parseInt(datos[1]); k++) {
+                                ProcesosE1 hiloInicio = new ProcesosE1(3, sem3, capacidadInicio, CIni, dia, inicio,countdown);
+                                hiloInicio.start();
+                                ocupadoInicio.Encolar(hiloInicio);
+                                productorInicio.setText(Integer.toString(Integer.parseInt(productorInicio.getText())+1));
+                                empleados--;
+                            }
+                           
+                        }if (i==11&&j==1) {
+                           for (int k = 0; k < Integer.parseInt(datos[1]); k++) {
+                               ProcesosE1 hiloCierre = new ProcesosE1(capacidadCierre, 4, sem4, CCie, dia, cierre,countdown);
+                                hiloCierre.start();
+                                ocupadoCierre.Encolar(hiloCierre);
+                                productorCierre.setText(Integer.toString(Integer.parseInt(productorCierre.getText())+1));
+                                empleados--;
+                            }
+                        }if (i==12&&j==1) {
+                           for (int k = 0; k < Integer.parseInt(datos[1]); k++) {
+                               ProcesosE1 hiloPT = new ProcesosE1(capacidadPT, 5, sem5, CPT, dia, plottwist,countdown);
+                                hiloPT.start();
+                                ocupadoPT.Encolar(hiloPT);
+                                productorPT.setText(Integer.toString(Integer.parseInt(productorPT.getText())+1));
+                                empleados--;
+                            }
+                        }if (i==13&&j==1) {
+                           for (int k = 0; k < Integer.parseInt(datos[1]); k++) {
+                               ProcesosE1 hiloEnsamblador = new ProcesosE1(mutex5, mutex4, mutex3, mutex2, mutex1, dia, 6, sem1, sem2, sem3, sem4, sem5, capacidadIntro, capacidadCreditos, capacidadInicio, capacidadCierre, capacidadPT, ensamblador, episodiosE1, CInt, CCre, CIni, CCie, CPT, countdown);
+                                hiloEnsamblador.start();
+                                ocupadoEnsamblador.Encolar(hiloEnsamblador);
+                                ensamblador.setText(Integer.toString(Integer.parseInt(ensamblador.getText())+1));
+                                empleados--;
+                            }
+                        }
+                    }
+                        }
+                    }
+                }
+            
+            lee.close();      
+     
+        }catch(IOException ex)
+         {
+           JOptionPane.showMessageDialog(null,ex+"" +
+                 "\nNo se ha encontrado el archivo",
+                       "ADVERTENCIA!!!",JOptionPane.WARNING_MESSAGE);
+          } 
+        return empleados;
+}
 //     public int leerPorDefecto2Fab2(long dia,int empleados,Cola librep,Cola ocup, Cola libreb,Cola ocub,Cola librepc,Cola ocupc,Cola librec,Cola ocuc,JLabel produP,JLabel produB,JLabel produPc,JLabel produC,Cola libreE,Cola ocuE,JLabel ensam,JLabel almap,JLabel almab,JLabel almapc,JLabel almac,JLabel telef,Semaphore sem,Semaphore sem2,Semaphore sem3,Semaphore sem4,Semaphore AP,Semaphore AB,Semaphore APC,Semaphore AC,Semaphore p,Semaphore b,Semaphore pc,Semaphore c,Semaphore mutex4,Semaphore mutex3,Semaphore mutex2,Semaphore mutex,JLabel countdown){
 //         String aux="";   
 //        String texto="";

@@ -1,6 +1,6 @@
 Dato,Valor
 Durancion-Dia(mili-segundos),3000
-Dias-entre-lanzamientos,30
+Dias-entre-lanzamiento,30
 capacidad-intro,30,999
 capacidad-creditos,25,999
 capacidad-inicio,50,999
